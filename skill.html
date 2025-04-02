@@ -64,6 +64,10 @@
             color: #00ff00;
         }
 
+        .navbar a.active {
+            color: #00ff00;
+        }
+
         /* Skills Section */
         .skills-container {
             display: flex;
@@ -89,37 +93,11 @@
             overflow: hidden;
         }
 
-        /* Pulsating Glow Animation */
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 10px #00ff00; }
-            50% { box-shadow: 0 0 20px #00ff00; }
-            100% { box-shadow: 0 0 10px #00ff00; }
-        }
-
         /* Hover Effects */
         .skill-box:hover {
             transform: scale(1.1);
             background-color: #333;
             animation: pulseGlow 1s infinite alternate;
-        }
-
-        /* Icon Styling */
-        .skill-icon {
-            font-size: 40px;
-            color: #00ff00;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        /* Text & Icon Movement on Hover */
-        .skill-box:hover .skill-icon {
-            transform: translateY(-5px);
-        }
-
-        .skill-box:hover .skill-title {
-            transform: translateY(3px);
-            color: #00ff00;
-            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
 
         /* Floating Effect */
@@ -150,7 +128,6 @@
 
     <section id="skills">
         <div class="skills-container">
-            <!-- Skill 1: Cybersecurity -->
             <div class="skill-box">
                 <div class="skill-icon">
                     <i class='bx bxs-lock-alt'></i>
@@ -158,73 +135,8 @@
                 <div class="skill-title">Cybersecurity</div>
                 <div class="skill-description">Proficient in network security, vulnerability assessments, and penetration testing.</div>
             </div>
-
-            <!-- Skill 2: Python -->
-            <div class="skill-box">
-                <div class="skill-icon">
-                    <i class='bx bxl-python'></i>
-                </div>
-                <div class="skill-title">Python Programming</div>
-                <div class="skill-description">Experienced in scripting for automation, data analysis, and security tools.</div>
-            </div>
-
-            <!-- Skill 3: Linux -->
-            <div class="skill-box">
-                <div class="skill-icon">
-                    <i class='bx bxs-server'></i>
-                </div>
-                <div class="skill-title">Linux</div>
-                <div class="skill-description">Expert in Linux administration, shell scripting, and using Linux for penetration testing.</div>
-            </div>
-
-            <!-- Skill 4: Docker -->
-            <div class="skill-box">
-                <div class="skill-icon">
-                    <i class='bx bxl-docker'></i>
-                </div>
-                <div class="skill-title">Docker</div>
-                <div class="skill-description">Familiar with containerization and using Docker for environment management.</div>
-            </div>
-
-            <!-- Skill 5: Wazuh SIEM -->
-            <div class="skill-box">
-                <div class="skill-icon">
-                    <i class='bx bx-shield'></i>
-                </div>
-                <div class="skill-title">Wazuh SIEM</div>
-                <div class="skill-description">Experienced in using Wazuh for Security Information and Event Management (SIEM).</div>
-            </div>
-
-            <!-- Skill 6: Splunk SIEM -->
-            <div class="skill-box">
-                <div class="skill-icon">
-                    <i class='bx bx-shield-alt'></i>
-                </div>
-                <div class="skill-title">Splunk SIEM</div>
-                <div class="skill-description">Expertise in Splunk for security data analysis, alerting, and monitoring.</div>
-            </div>
-
-            <!-- Skill 7: Log Analysis -->
-            <div class="skill-box">
-                <div class="skill-icon">
-                    <i class='bx bx-archive'></i>
-                </div>
-                <div class="skill-title">Log Analysis</div>
-                <div class="skill-description">Skilled in analyzing logs for security incidents and monitoring system health.</div>
-            </div>
-
-            <!-- Skill 8: Threat Defense -->
-            <div class="skill-box">
-                <div class="skill-icon">
-                    <i class='bx bxs-shield'></i>
-                </div>
-                <div class="skill-title">Threat Defense</div>
-                <div class="skill-description">Knowledgeable in threat intelligence, prevention strategies, and defense mechanisms.
-                </div>
-            </div>
-
         </div>
     </section>
 
 </body>
-</html> 
+</html>
