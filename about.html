@@ -11,12 +11,9 @@
         /* General body styling */
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Full screen height */
             margin: 0;
-            background-color: #f4f4f4; /* Light background color */
+            height: 100%; /* Full screen height */
+            background-color: #f4f4f4; /* Light background color, adjust if needed */
         }
 
         /* Header and Navbar styles */
@@ -49,13 +46,23 @@
             border-radius: 5px;
         }
 
-        /* Section styling */
+        /* Full-screen section styling */
         section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            height: 100vh; /* Full screen height */
             padding: 40px;
+            margin-top: 80px; /* Adjust for header space */
+            background-color: #fff; /* White background for section */
+        }
+
+        /* About content */
+        .about-content {
             max-width: 800px;
-            margin: 20px;
-            background-color: #fff;
+            background-color: #ffffff;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -100,16 +107,18 @@
     </header>
 
     <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Hello! I'm Alen John. I'm passionate about cybersecurity and ethical hacking. I specialize in monitoring security incidents, detecting threats, and conducting penetration tests. I also love contributing to open-source projects and learning new techniques to improve my skills in various areas of cybersecurity.
-        </p>
-        <p>
-            I have hands-on experience with various tools such as Wireshark, Metasploit, and Nmap, and have participated in several security assessments and vulnerability analyses.
-        </p>
-        <p>
-            I’m constantly learning and evolving to stay ahead in the ever-changing cybersecurity landscape. My aim is to help organizations stay secure by identifying weaknesses and providing solutions to mitigate risks.
-        </p>
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>
+                Hello! I'm Alen John. I'm passionate about cybersecurity and ethical hacking. I specialize in monitoring security incidents, detecting threats, and conducting penetration tests. I also love contributing to open-source projects and learning new techniques to improve my skills in various areas of cybersecurity.
+            </p>
+            <p>
+                I have hands-on experience with various tools such as Wireshark, Metasploit, and Nmap, and have participated in several security assessments and vulnerability analyses.
+            </p>
+            <p>
+                I’m constantly learning and evolving to stay ahead in the ever-changing cybersecurity landscape. My aim is to help organizations stay secure by identifying weaknesses and providing solutions to mitigate risks.
+            </p>
+        </div>
     </section>
 
 </body>
