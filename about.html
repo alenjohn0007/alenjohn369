@@ -83,7 +83,48 @@
         .about-content {
             max-width: 800px;
             padding: 20px;
-            /* No background, border, or shadow for clean look */
+            opacity: 0;
+            animation: fadeIn 1s forwards; /* Animation to fade in the whole section */
+        }
+
+        /* Fade-in effect for each point */
+        .fadeInPoint {
+            opacity: 0;
+            animation: fadeInPoint 1s ease-in forwards;
+        }
+
+        /* Delayed fade-in for each point */
+        .fadeInPoint:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .fadeInPoint:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .fadeInPoint:nth-child(3) {
+            animation-delay: 1.5s;
+        }
+
+        /* Animation keyframes for fade-in */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInPoint {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Heading styles */
@@ -110,6 +151,7 @@
         a:hover {
             text-decoration: underline;
         }
+
     </style>
 </head>
 <body>
@@ -132,15 +174,28 @@
     <section id="about">
         <div class="about-content" data-scroll data-scroll-speed="-5">
             <h2>About Me</h2>
-            <p>
+
+            <p class="fadeInPoint">
                 Hello! I'm Alen John. I'm passionate about cybersecurity and ethical hacking. I specialize in monitoring security incidents, detecting threats, and conducting penetration tests. I also love contributing to open-source projects and learning new techniques to improve my skills in various areas of cybersecurity.
             </p>
-            <p>
+
+            <p class="fadeInPoint">
                 I have hands-on experience with various tools such as Wireshark, Metasploit, and Nmap, and have participated in several security assessments and vulnerability analyses.
             </p>
-            <p>
+
+            <p class="fadeInPoint">
                 I’m constantly learning and evolving to stay ahead in the ever-changing cybersecurity landscape. My aim is to help organizations stay secure by identifying weaknesses and providing solutions to mitigate risks.
             </p>
+
+            <!-- Additional Sections -->
+            <p class="fadeInPoint">
+                I am highly skilled in incident response, threat hunting, and security automation. I enjoy working in collaborative environments where we tackle challenges and push the boundaries of security.
+            </p>
+
+            <p class="fadeInPoint">
+                My passion for cybersecurity extends to my personal projects, where I explore new technologies and improve my understanding of attack vectors and defenses.
+            </p>
+
         </div>
     </section>
 
