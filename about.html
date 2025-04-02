@@ -2,21 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Alen</title>
+
+    <!-- Favicon and External Styles -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- External CSS and JS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="JAVASCRIPT/matrix.js"></script>
+
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
+            height: 100%;
             background-color: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
         }
+
+        /* Matrix Effect */
         canvas {
             position: absolute;
             top: 0;
@@ -25,37 +35,39 @@
             height: 100%;
             z-index: -1;
         }
+
+        /* Header and Navigation */
         header {
             width: 100%;
             position: fixed;
             top: 0;
             left: 0;
-            background-color: rgba(51, 51, 51, 0.9);
+            background-color: #333;
             padding: 20px;
             z-index: 100;
-            transition: background 0.3s ease-in-out;
         }
+
+        .header .logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: 30px;
+        }
+
         .navbar a {
             color: #fff;
             padding: 10px 20px;
             text-decoration: none;
+            margin: 0 10px;
             font-size: 16px;
-            position: relative;
+            transition: 0.3s ease-in-out;
         }
-        .navbar a::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background: #ff3e00;
-            transition: 0.3s;
-            transform: translateX(-50%);
+
+        .navbar a:hover {
+            background-color: #575757;
+            border-radius: 5px;
         }
-        .navbar a:hover::after {
-            width: 100%;
-        }
+
+        /* Section Styling */
         section {
             display: flex;
             justify-content: center;
@@ -64,56 +76,123 @@
             height: 100vh;
             padding: 40px;
             margin-top: 80px;
+            background-color: #0a0a0a;
         }
+
+        /* About Content */
         .about-content {
             max-width: 800px;
+            padding: 20px;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
+            animation: fadeIn 1s forwards;
         }
-        .show { opacity: 1 !important; transform: translateY(0) !important; }
-        h2 { font-size: 36px; color: #ff3e00; }
-        p { font-size: 18px; line-height: 1.6; opacity: 0; transition: opacity 0.8s ease-in-out; }
-        .fade-in { opacity: 1 !important; }
+
+        /* Fade-in Effects */
+        .fadeInPoint {
+            opacity: 0;
+            animation: fadeInPoint 1s ease-in forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Delayed Fade-in */
+        .fadeInPoint:nth-child(1) { animation-delay: 0.5s; }
+        .fadeInPoint:nth-child(2) { animation-delay: 1s; }
+        .fadeInPoint:nth-child(3) { animation-delay: 1.5s; }
+        .fadeInPoint:nth-child(4) { animation-delay: 2s; }
+        .fadeInPoint:nth-child(5) { animation-delay: 2.5s; }
+        .fadeInPoint:nth-child(6) { animation-delay: 3s; }
+
+        /* Hover Effect */
+        .fadeInPoint:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInPoint {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Headings */
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        /* Paragraphs */
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        /* Links */
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Matrix Effect -->
     <canvas id="matrixCanvas"></canvas>
+
     <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
+
         <nav class="navbar">
-            <a href="index.html">Home</a>
-            <a href="about.html" class="active">About</a>
-            <a href="skill.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html" style="--i:1;">Home</a>
+            <a href="about.html" style="--i:2;" class="active">About</a>
+            <a href="skill.html" style="--i:3;">Skills</a>
+            <a href="projects.html" style="--i:4;">Projects</a>
+            <a href="contact.html" style="--i:5;">Contact</a>
         </nav>
     </header>
+
     <section id="about">
-        <div class="about-content">
-            <h2 id="typed-title"></h2>
-            <p class="fade">Hello! I'm Alen John, passionate about cybersecurity and ethical hacking...</p>
-            <p class="fade">Hands-on experience with tools like Wireshark, Metasploit, and Nmap...</p>
-            <p class="fade">Constantly learning to stay ahead in the ever-changing cybersecurity landscape...</p>
+        <div class="about-content" data-scroll data-scroll-speed="-5">
+            <h2>About Me</h2>
+
+            <p class="fadeInPoint">
+                Hello! I'm Alen John. I'm passionate about cybersecurity and ethical hacking. I specialize in monitoring security incidents, detecting threats, and conducting penetration tests.
+            </p>
+
+            <p class="fadeInPoint">
+                I have hands-on experience with various tools such as Wireshark, Metasploit, and Nmap, and have participated in several security assessments and vulnerability analyses.
+            </p>
+
+            <p class="fadeInPoint">
+                I’m constantly learning and evolving to stay ahead in the ever-changing cybersecurity landscape. My aim is to help organizations stay secure by identifying weaknesses and providing solutions.
+            </p>
+
+            <p class="fadeInPoint">
+                My interest in ethical hacking started early when I became fascinated by how systems work and how vulnerabilities can be exploited. Since then, I have dedicated my time to ethical hacking, focusing on responsible security practices.
+            </p>
+
+            <p class="fadeInPoint">
+                In my free time, I enjoy participating in Capture The Flag (CTF) challenges, experimenting with security tools, and writing about cybersecurity techniques.
+            </p>
+
+            <p class="fadeInPoint">
+                My goal is to become a top cybersecurity professional, helping organizations secure their infrastructure. I am also working towards earning my CEH (Certified Ethical Hacker) certification.
+            </p>
+
+            <p class="fadeInPoint">
+                I strongly believe that cybersecurity is not just about hacking—it's about making the digital world a safer place for everyone.
+            </p>
         </div>
     </section>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const aboutContent = document.querySelector(".about-content");
-            const fadeElements = document.querySelectorAll(".fade");
-            
-            function revealOnScroll() {
-                if (aboutContent.getBoundingClientRect().top < window.innerHeight * 0.75) {
-                    aboutContent.classList.add("show");
-                    fadeElements.forEach((p, index) => {
-                        setTimeout(() => p.classList.add("fade-in"), index * 500);
-                    });
-                }
-            }
-            window.addEventListener("scroll", revealOnScroll);
-            revealOnScroll();
-            new Typed("#typed-title", { strings: ["About Me"], typeSpeed: 50, showCursor: false });
-        });
-    </script>
+
 </body>
 </html>
