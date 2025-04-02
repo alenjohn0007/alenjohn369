@@ -1,9 +1,1 @@
-# Ethical-Hacker-Portfolio-template
-
-
-
-
-
-
-
 
