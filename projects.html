@@ -2,55 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Alen</title>
 
-    <!-- Correct path to favicon and CSS -->
+    <!-- Favicon and External Styles -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
 
-    <!-- External CSS (boxicons) -->
+    <!-- External Libraries -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <style>
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             height: 100%;
             background-color: #0a0a0a;
             color: #fff;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-in-out forwards;
+            overflow-x: hidden;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        header {
+        /* Navbar Styling */
+        .header {
             width: 100%;
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #333;
-            padding: 20px;
-            z-index: 100;
+            background-color: rgba(51, 51, 51, 0.9);
+            padding: 15px 20px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header .logo {
-            color: #fff;
+        .logo {
+            font-size: 24px;
+            color: white;
             text-decoration: none;
-            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 15px;
         }
 
         .navbar a {
             color: #fff;
-            padding: 10px 20px;
             text-decoration: none;
-            margin: 0 10px;
+            padding: 10px 15px;
             font-size: 16px;
+            transition: 0.3s;
         }
 
         .navbar a:hover, .navbar a.active {
@@ -58,15 +63,55 @@
             border-radius: 5px;
         }
 
-        section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 80px 20px;
-            margin-top: 80px;
+        /* Hamburger Icon */
+        .menu-icon {
+            display: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
         }
 
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: rgba(51, 51, 51, 0.9);
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .navbar a {
+                display: block;
+                padding: 10px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+        }
+
+        /* Projects Section */
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            padding: 40px;
+            margin-top: 80px;
+            background-color: #0a0a0a;
+        }
+
+        /* Project Carousel */
         .carousel {
             display: flex;
             overflow: hidden;
@@ -153,15 +198,17 @@
             .carousel {
                 width: 95%;
             }
-            .project-title {
-                font-size: 20px;
-            }
         }
     </style>
 </head>
 <body>
+
     <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
+
+        <!-- Hamburger Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
         <nav class="navbar">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -172,102 +219,54 @@
     </header>
 
     <section id="projects">
-        <h2>My Projects</h2>
         <div class="carousel">
             <div class="carousel-track">
                 <div class="carousel-item">
-                    <div class="project-title">SOC Project - Website Log Monitoring Using Splunk</div>
-                    <div class="project-description">Deploying WordPress on Ubuntu and monitoring its logs using Splunk for real-time security analysis.</div>
+                    <h2 class="project-title">Anganwadi Management System</h2>
+                    <p class="project-description">A web-based system to manage Anganwadi centers across Kerala, including child registration, vaccine tracking, and staff management.</p>
                 </div>
                 <div class="carousel-item">
-                    <div class="project-title">MCA Project - Anganwadi Management System</div>
-                    <div class="project-description">A web-based system to manage Anganwadi centers, including child registration, staff scheduling, and vaccination tracking.</div>
+                    <h2 class="project-title">Cybersecurity Dashboard</h2>
+                    <p class="project-description">A security dashboard for monitoring network threats, log analysis, and system vulnerabilities.</p>
                 </div>
                 <div class="carousel-item">
-                    <div class="project-title">Wazuh Windows 11 Monitoring</div>
-                    <div class="project-description">Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="project-title">BCA Project - Latex Sales and Service System</div>
-                    <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="project-title">VAPT Project</div>
-                    <div class="project-description">Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</div>
+                    <h2 class="project-title">SIEM Log Analyzer</h2>
+                    <p class="project-description">A log analysis tool integrated with Wazuh and Splunk for security monitoring and event detection.</p>
                 </div>
             </div>
         </div>
+
         <div class="carousel-buttons">
-            <button class="carousel-button" id="prev">❮</button>
-            <button class="carousel-button" id="next">❯</button>
+            <button class="carousel-button" onclick="prevSlide()">&#10094;</button>
+            <button class="carousel-button" onclick="nextSlide()">&#10095;</button>
         </div>
-        <div class="indicators"></div>
     </section>
 
     <script>
-        const track = document.querySelector('.carousel-track');
-        const prevButton = document.getElementById('prev');
-        const nextButton = document.getElementById('next');
-        const items = document.querySelectorAll('.carousel-item');
-        const indicatorsContainer = document.querySelector('.indicators');
-        let index = 0;
-        let autoSlide;
-
-        function updateCarousel() {
-            track.style.transform = `translateX(-${index * 100}%)`;
-            updateIndicators();
+        // Navbar Toggle for Mobile View
+        function toggleMenu() {
+            document.querySelector('.navbar').classList.toggle('active');
         }
 
-        function nextSlide() {
-            index = (index + 1) % items.length;
-            updateCarousel();
+        // Project Carousel Logic
+        let currentIndex = 0;
+        const track = document.querySelector('.carousel-track');
+        const totalItems = document.querySelectorAll('.carousel-item').length;
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
         function prevSlide() {
-            index = (index - 1 + items.length) % items.length;
+            currentIndex = (currentIndex === 0) ? totalItems - 1 : currentIndex - 1;
             updateCarousel();
         }
 
-        function startAutoSlide() {
-            autoSlide = setInterval(nextSlide, 3000);
+        function nextSlide() {
+            currentIndex = (currentIndex === totalItems - 1) ? 0 : currentIndex + 1;
+            updateCarousel();
         }
-
-        function stopAutoSlide() {
-            clearInterval(autoSlide);
-        }
-
-        prevButton.addEventListener('click', prevSlide);
-        nextButton.addEventListener('click', nextSlide);
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowRight') nextSlide();
-            if (event.key === 'ArrowLeft') prevSlide();
-        });
-
-        track.addEventListener('mouseenter', stopAutoSlide);
-        track.addEventListener('mouseleave', startAutoSlide);
-
-        items.forEach((_, i) => {
-            const dot = document.createElement('span');
-            dot.classList.add('indicator');
-            if (i === 0) dot.classList.add('active-indicator');
-            dot.setAttribute('data-index', i);
-
-            dot.addEventListener('click', (e) => {
-                index = parseInt(e.target.getAttribute('data-index'));
-                updateCarousel();
-            });
-
-            indicatorsContainer.appendChild(dot);
-        });
-
-        function updateIndicators() {
-            document.querySelectorAll('.indicator').forEach((dot, i) => {
-                dot.classList.toggle('active-indicator', i === index);
-            });
-        }
-
-        startAutoSlide();
     </script>
+
 </body>
 </html>
