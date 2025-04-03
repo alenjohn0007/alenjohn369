@@ -60,7 +60,7 @@
         }
 
         .contact-container {
-            margin-top: 100px;
+            margin-top: 80px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -68,17 +68,23 @@
 
         .contact-item {
             background: linear-gradient(135deg, #1a1a1a, #222);
-            border-radius: 12px;
-            width: 85%;
-            max-width: 450px; /* Increased width */
-            margin: 12px 0;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 450px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
             overflow: hidden;
+            cursor: pointer;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
         }
 
         .contact-item:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 25px rgba(30, 219, 9, 0.9);
+            transform: scale(1.08);
+            box-shadow: 0px 0px 20px rgba(30, 219, 9, 0.9);
             background: linear-gradient(135deg, #222, #333);
         }
 
@@ -87,30 +93,28 @@
         }
 
         .contact-item a {
-            display: flex; /* Ensure full clickability */
-            align-items: center;
-            justify-content: center;
-            width: 100%;  
-            height: 80px; /* Increased height */
-            text-decoration: none;
             color: #fff;
-            font-size: 20px; /* Slightly bigger font */
-            font-weight: bold;
-            border-radius: 12px;
-            box-sizing: border-box; /* Ensures padding doesn't affect size */
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            justify-content: center;
         }
 
         .contact-item i {
-            font-size: 28px; /* Bigger icon */
-            margin-right: 12px;
+            font-size: 24px;
+            margin-right: 10px;
             transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-            pointer-events: none; /* Prevents interference */
         }
 
         .contact-item:hover i {
             transform: rotate(360deg);
             color: #1edb09;
         }
+
     </style>
 </head>
 <body>
@@ -146,5 +150,6 @@
             </a>
         </div>
     </div>
+
 </body>
-</html>
+</html> 
