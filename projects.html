@@ -37,48 +37,25 @@
             background-color: #333;
             padding: 20px;
             z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        .logo {
+        .header .logo {
             color: #fff;
             text-decoration: none;
             font-size: 30px;
         }
 
-        .navbar {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-links a {
+        .navbar a {
             color: #fff;
             padding: 10px 20px;
             text-decoration: none;
             margin: 0 10px;
             font-size: 16px;
-            transition: background 0.3s ease;
         }
 
-        .nav-links a:hover {
+        .navbar a:hover {
             background-color: #575757;
             border-radius: 5px;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 28px;
-            cursor: pointer;
         }
 
         section {
@@ -169,51 +146,17 @@
         .active-indicator {
             background-color: white;
         }
-
-        /* Responsive Navigation */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background: #333;
-                width: 100%;
-                text-align: center;
-                padding: 10px 0;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 12px;
-                font-size: 18px;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-        }
     </style>
 </head>
 <body>
     <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
         <nav class="navbar">
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="skill.html">Skills</a>
-                <a href="projects.html" class="active">Projects</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <i class="bx bx-menu"></i>
-            </button>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="skill.html">Skills</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
@@ -260,7 +203,7 @@
         let autoSlide;
 
         function updateCarousel() {
-            track.style.transform = translateX(-${index * 100}%);
+            track.style.transform = `translateX(-${index * 100}%)`;
             updateIndicators();
         }
 
@@ -313,14 +256,7 @@
             });
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            startAutoSlide();
-        });
-
-        // Toggle menu on mobile
-        document.querySelector(".menu-toggle").addEventListener("click", function() {
-            document.querySelector(".nav-links").classList.toggle("active");
-        });
+        startAutoSlide();
     </script>
 </body>
 </html>
