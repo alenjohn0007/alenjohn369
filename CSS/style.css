@@ -18,7 +18,8 @@ body {
             position: fixed;
             top: 0;
             left: 0;
-            background-color: rgba(51, 51, 51, 0.9);
+            background: transparent;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.548), green, rgba(0, 0, 0, 0.548));
             padding: 15px 20px;
             z-index: 1000;
             backdrop-filter: blur(5px);
