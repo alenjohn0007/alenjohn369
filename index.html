@@ -6,115 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Alen</title>
 
-    <!-- External CSS -->
+    <!-- Correct path to favicon and CSS -->
+    <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
     
-    <!-- Boxicons -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    
+    <!-- External CSS (boxicons) and JS (typed.js) -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
     <style>
-        /* Keep the existing design intact */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #000;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Navbar */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background: #111;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 20px;
-            color: red;
-            text-decoration: none;
-        }
-
-        .navbar {
-            display: flex;
-            gap: 20px;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            transition: 0.3s;
-        }
-
-        .navbar a:hover {
-            color: red;
-        }
-
-        /* Responsive Navbar */
-        .menu-icon {
-            display: none;
-            font-size: 25px;
-            cursor: pointer;
+        /* Responsive Styling Without Changing Design */
+        @media (max-width: 1024px) {
+            .home-content {
+                text-align: center;
+                padding: 20px;
+            }
+            .home-img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .home-img img {
+                max-width: 250px;
+                height: auto;
+            }
         }
 
         @media (max-width: 768px) {
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px;
+            }
+            
             .navbar {
                 display: none;
                 flex-direction: column;
-                background: #222;
+                background: #111;
                 position: absolute;
                 top: 60px;
                 right: 0;
-                width: 200px;
+                width: 100%;
                 text-align: center;
-                padding: 10px;
             }
 
             .navbar a {
                 display: block;
                 padding: 10px;
+                color: white;
             }
 
             .menu-icon {
                 display: block;
+                font-size: 25px;
+                color: white;
+                cursor: pointer;
             }
-        }
-
-        /* Home Section */
-        .home {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-top: 80px;
-            padding: 20px;
-        }
-
-        .home h1 {
-            font-size: 40px;
-            color: red;
-        }
-
-        .home p {
-            font-size: 16px;
-            max-width: 600px;
-            margin-top: 10px;
-            line-height: 1.5;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
+            
             .home h1 {
                 font-size: 28px;
             }
@@ -122,51 +71,16 @@
             .home p {
                 font-size: 14px;
             }
-        }
 
-        /* Social Icons */
-        .home-sci a {
-            color: white;
-            font-size: 25px;
-            margin: 0 10px;
-            transition: 0.3s;
-        }
+            .btn-box {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
 
-        .home-sci a:hover {
-            color: red;
-        }
-
-        /* Button */
-        .btn-box {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: red;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .btn-box:hover {
-            background: darkred;
-        }
-
-        /* Image */
-        .home-img img {
-            width: 100%;
-            max-width: 250px;
-            height: auto;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
             .home-img img {
                 max-width: 200px;
             }
         }
-
     </style>
 </head>
 <body>
@@ -185,31 +99,33 @@
     </header>
 
     <section id="home" class="home">
-        <h3>Hello, It's me</h3>
-        <h1>Alen John</h1>
-        <h3>And I'm a <span class="pro-text"></span></h3>
+        <div class="home-content">
+            <h3>Hello, It's me</h3>
+            <h1>Alen John</h1>
+            <h3>And I'm a <span class="pro-text"></span></h3>
 
-        <script>
-            var typed = new Typed(".pro-text", {
-                strings: ["SOC Analyst", "Ethical Hacker", "Security Researcher", "Incident Responder", "Web Developer"],
-                typeSpeed: 100,
-                backSpeed: 100,
-                backDelay: 1000,
-                loop: true
-            });
-        </script>
-        
-        <p>
-            This portfolio highlights my passion for cybersecurity, my expertise in monitoring and defending against security incidents, and my skills in ethical hacking.
-        </p>
+            <script>
+                var typed = new Typed(".pro-text", {
+                    strings: ["SOC Analyst", "Ethical Hacker", "Security Researcher", "Incident Responder", "Web Developer"],
+                    typeSpeed: 100,
+                    backSpeed: 100,
+                    backDelay: 1000,
+                    loop: true
+                });
+            </script>
+            
+            <p>
+                This portfolio highlights my passion for cybersecurity, my expertise in monitoring and defending against security incidents, and my skills in ethical hacking.
+            </p>
 
-        <div class="home-sci">
-            <a href="https://github.com/alenjohn0007" target="_blank"><i class='bx bxl-github'></i></a>
-            <a href="https://www.linkedin.com/in/alenjohn9404/" target="_blank"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://wa.me/918848603693" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+            <div class="home-sci">
+                <a href="https://github.com/alenjohn0007" target="_blank"><i class='bx bxl-github'></i></a>
+                <a href="https://www.linkedin.com/in/alenjohn9404/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://wa.me/918848603693" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+            </div>
+
+            <a href="Alen_John_Resume.pdf" class="btn-box" download>Download CV</a>
         </div>
-
-        <a href="Alen_John_Resume.pdf" class="btn-box" download>Download CV</a>
 
         <div class="home-img">
             <img src="IMAGES/saianon.png" alt="Alen John">
