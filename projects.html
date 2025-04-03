@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Alen</title>
 
@@ -11,7 +10,7 @@
     <link rel="stylesheet" href="CSS/style.css">
 
     <!-- External CSS (boxicons) -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <style>
         body {
@@ -43,10 +42,15 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .header .logo {
             color: #fff;
             text-decoration: none;
             font-size: 30px;
+        }
+
+        .navbar {
+            display: flex;
         }
 
         .navbar a {
@@ -62,6 +66,41 @@
             border-radius: 5px;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(51, 51, 51, 0.9);
+                text-align: center;
+            }
+
+            .navbar a {
+                padding: 15px;
+                width: 100%;
+                display: block;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+        }
+
         section {
             display: flex;
             flex-direction: column;
@@ -69,86 +108,6 @@
             text-align: center;
             padding: 80px 20px;
             margin-top: 80px;
-        }
-
-        .carousel {
-            display: flex;
-            overflow: hidden;
-            width: 80%;
-            max-width: 1200px;
-            position: relative;
-            border-radius: 10px;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-item {
-            min-width: 100%;
-            box-sizing: border-box;
-            text-align: center;
-            background-color: #222;
-            padding: 40px;
-            border-radius: 10px;
-        }
-
-        .project-title {
-            font-size: 24px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .project-title:hover {
-            color: #1edb09;
-        }
-
-        .project-description {
-            display: none;
-            font-size: 16px;
-            color: #ccc;
-            margin-top: 10px;
-        }
-
-        .project-title:hover + .project-description {
-            display: block;
-        }
-
-        .carousel-buttons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .carousel-button {
-            background-color: #fff;
-            color: #000;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            margin: 0 5px;
-            border-radius: 5px;
-        }
-
-        .indicators {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .indicator {
-            height: 10px;
-            width: 10px;
-            margin: 0 5px;
-            display: inline-block;
-            border-radius: 50%;
-            background-color: gray;
-            cursor: pointer;
-        }
-
-        .active-indicator {
-            background-color: white;
         }
     </style>
 </head>
@@ -162,6 +121,9 @@
             <a href="projects.html" class="active">Projects</a>
             <a href="contact.html">Contact</a>
         </nav>
+        <div class="hamburger">
+            <i class="bx bx-menu"></i>
+        </div>
     </header>
 
     <section id="projects">
@@ -194,21 +156,27 @@
             <button class="carousel-button" id="prev">❮</button>
             <button class="carousel-button" id="next">❯</button>
         </div>
-        <div class="indicators"></div>
     </section>
 
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navbar = document.querySelector('.navbar');
+
+        hamburger.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+
+        // Carousel Functionality
         const track = document.querySelector('.carousel-track');
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
         const items = document.querySelectorAll('.carousel-item');
-        const indicatorsContainer = document.querySelector('.indicators');
         let index = 0;
         let autoSlide;
 
         function updateCarousel() {
             track.style.transform = `translateX(-${index * 100}%)`;
-            updateIndicators();
         }
 
         function nextSlide() {
@@ -231,21 +199,12 @@
 
         prevButton.addEventListener('click', nextSlide);
         nextButton.addEventListener('click', prevSlide);
-        document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') nextSlide(); if (e.key === 'ArrowLeft') prevSlide(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
         track.addEventListener('mouseenter', stopAutoSlide);
         track.addEventListener('mouseleave', startAutoSlide);
-        
-        items.forEach((_, i) => {
-            const dot = document.createElement('span');
-            dot.classList.add('indicator', i === 0 && 'active-indicator');
-            dot.setAttribute('data-index', i);
-            dot.addEventListener('click', () => { index = i; updateCarousel(); });
-            indicatorsContainer.appendChild(dot);
-        });
-
-        function updateIndicators() {
-            document.querySelectorAll('.indicator').forEach((dot, i) => dot.classList.toggle('active-indicator', i === index));
-        }
 
         startAutoSlide();
     </script>
