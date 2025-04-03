@@ -1,117 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Alen</title>
-    <link rel="stylesheet" href="CSS/style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        body {
-            background-color: #0a0a0a;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+<style>
+    .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: #222;
+        padding: 40px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
 
-        .carousel {
-            display: flex;
-            overflow: hidden;
-            width: 80%;
-            max-width: 1200px;
-            margin: auto;
-            position: relative;
-            border-radius: 10px;
-        }
+    .project-description {
+        display: none;
+        font-size: 16px;
+        color: #ccc;
+        margin-top: 10px;
+    }
 
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
+    .carousel-item.active {
+        background-color: #444;
+    }
+</style>
 
-        .carousel-item {
-            min-width: 100%;
-            padding: 40px;
-            box-sizing: border-box;
-            background-color: #222;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
-        }
+<script>
+    document.querySelectorAll('.carousel-item').forEach(item => {
+        item.addEventListener('click', () => {
+            // Hide all descriptions
+            document.querySelectorAll('.project-description').forEach(desc => {
+                desc.style.display = 'none';
+            });
 
-        .carousel-item:hover {
-            transform: scale(1.05);
-        }
+            // Remove active class from all items
+            document.querySelectorAll('.carousel-item').forEach(proj => {
+                proj.classList.remove('active');
+            });
 
-        .project-title {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .project-description {
-            font-size: 16px;
-            color: #ccc;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.5s, max-height 0.5s;
-        }
-
-        .carousel-item.active .project-description {
-            opacity: 1;
-            max-height: 100px;
-        }
-
-        .carousel-buttons {
-            margin-top: 20px;
-        }
-
-        .carousel-button {
-            background-color: #fff;
-            color: #000;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            margin: 0 5px;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
-    <h2>My Projects</h2>
-    <div class="carousel">
-        <div class="carousel-track">
-            <div class="carousel-item">
-                <div class="project-title">SOC Project</div>
-                <div class="project-description">Deploying WordPress on Ubuntu and monitoring its logs using Splunk for real-time security analysis.</div>
-            </div>
-            <div class="carousel-item">
-                <div class="project-title">MCA Project - Anganwadi Management System</div>
-                <div class="project-description">A web-based system to manage Anganwadi centers, including child registration, staff scheduling, and vaccination tracking.</div>
-            </div>
-            <div class="carousel-item">
-                <div class="project-title">Wazuh Windows 11 Monitoring</div>
-                <div class="project-description">Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</div>
-            </div>
-        </div>
-    </div>
-    <div class="carousel-buttons">
-        <button class="carousel-button" id="prev">❮</button>
-        <button class="carousel-button" id="next">❯</button>
-    </div>
-
-    <script>
-        const items = document.querySelectorAll('.carousel-item');
-        let index = 0;
-
-        function toggleDescription(event) {
-            items.forEach(item => item.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-        }
-
-        items.forEach(item => {
-            item.addEventListener('click', toggleDescription);
+            // Show description for clicked item
+            item.classList.add('active');
+            item.querySelector('.project-description').style.display = 'block';
         });
-    </script>
-</body>
-</html>
+    });
+</script>
