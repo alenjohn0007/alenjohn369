@@ -24,8 +24,8 @@
             overflow-x: hidden;
         }
 
-        /* Header */
-        header {
+        /* Navbar Styling */
+        .header {
             width: 100%;
             position: fixed;
             top: 0;
@@ -39,28 +39,65 @@
             align-items: center;
         }
 
-        .header .logo {
-            color: #fff;
-            text-decoration: none;
+        .logo {
             font-size: 24px;
+            color: white;
+            text-decoration: none;
             font-weight: bold;
         }
 
         .navbar {
             display: flex;
+            gap: 15px;
         }
 
         .navbar a {
             color: #fff;
-            padding: 10px 15px;
             text-decoration: none;
+            padding: 10px 15px;
             font-size: 16px;
-            transition: 0.3s ease-in-out;
+            transition: 0.3s;
         }
 
         .navbar a:hover {
             background-color: #575757;
             border-radius: 5px;
+        }
+
+        /* Hamburger Icon */
+        .menu-icon {
+            display: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: rgba(51, 51, 51, 0.9);
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .navbar a {
+                display: block;
+                padding: 10px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
         }
 
         /* About Section */
@@ -85,72 +122,14 @@
             font-size: 24px;
             font-weight: bold;
             color: #00ffcc;
-            min-height: 30px; /* Prevents text shifting */
         }
 
         /* Glow Effect on Hover */
-        .fadeInPoint {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fadeInPoint.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .fadeInPoint:hover {
             transform: scale(1.05);
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
         }
 
-        /* Responsive Design */
-        @media screen and (max-width: 1024px) {
-            section {
-                padding: 20px;
-                height: auto;
-            }
-            .about-content {
-                max-width: 90%;
-                padding: 15px;
-            }
-            .navbar a {
-                padding: 10px 12px;
-                font-size: 14px;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .navbar {
-                flex-direction: column;
-                gap: 5px;
-            }
-            .about-content {
-                font-size: 14px;
-            }
-            .typing {
-                font-size: 20px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .header .logo {
-                font-size: 20px;
-            }
-            .about-content {
-                max-width: 95%;
-                padding: 10px;
-                font-size: 12px;
-            }
-            .typing {
-                font-size: 18px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -160,6 +139,9 @@
 
     <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
+
+        <!-- Hamburger Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
         <nav class="navbar">
             <a href="index.html">Home</a>
@@ -212,25 +194,16 @@
         document.addEventListener("DOMContentLoaded", function () {
             var typed = new Typed(".typing", {
                 strings: ["Cybersecurity Enthusiast.", "Ethical Hacker.", "Security Researcher."],
-                typeSpeed: 50,
+                typeSpeed: 50,  // Faster typing
                 backSpeed: 30,
                 loop: true
             });
-
-            // Fade-in effect on scroll
-            function fadeInElements() {
-                let elements = document.querySelectorAll('.fadeInPoint');
-                elements.forEach(el => {
-                    let rect = el.getBoundingClientRect();
-                    if (rect.top < window.innerHeight * 0.8) {
-                        el.classList.add('visible');
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', fadeInElements);
-            fadeInElements(); // Initial check
         });
+
+        // Responsive Navbar Toggle
+        function toggleMenu() {
+            document.querySelector(".navbar").classList.toggle("active");
+        }
     </script>
 
 </body>
