@@ -63,6 +63,12 @@
             border-radius: 5px;
         }
 
+        /* Mark the active page */
+        .navbar a.active {
+            color: #1edb09;
+            font-weight: bold;
+        }
+
         /* Hamburger Icon */
         .menu-icon {
             display: none;
@@ -71,7 +77,6 @@
             cursor: pointer;
         }
 
-        /* Responsive Design */
         @media screen and (max-width: 768px) {
             .navbar {
                 display: none;
@@ -111,92 +116,49 @@
             background-color: #0a0a0a;
         }
 
-        /* Project Carousel */
-        .carousel {
-            display: flex;
-            overflow: hidden;
-            width: 80%;
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             max-width: 1200px;
-            position: relative;
+            width: 100%;
+        }
+
+        .project-box {
+            background-color: #333;
+            padding: 20px;
             border-radius: 10px;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-item {
-            min-width: 100%;
-            box-sizing: border-box;
             text-align: center;
-            background-color: #222;
-            padding: 40px;
-            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
         }
 
         .project-title {
-            font-size: 24px;
+            font-size: 20px;
+            font-weight: bold;
             margin-bottom: 10px;
-            cursor: pointer;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .project-title:hover {
             color: #1edb09;
         }
 
         .project-description {
-            display: none;
-            font-size: 16px;
             color: #ccc;
+            font-size: 14px;
             margin-top: 10px;
         }
 
-        .project-title:hover ~ .project-description {
-            display: block;
-            opacity: 1;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .carousel-buttons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .carousel-button {
-            background-color: #fff;
-            color: #000;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            margin: 0 5px;
-            border-radius: 5px;
-        }
-
-        .indicators {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .indicator {
-            height: 10px;
-            width: 10px;
-            margin: 0 5px;
-            display: inline-block;
-            border-radius: 50%;
-            background-color: gray;
-            cursor: pointer;
-        }
-
-        .active-indicator {
-            background-color: white;
-        }
-
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .carousel {
-                width: 95%;
+            .projects-container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .project-box {
+                padding: 15px;
             }
         }
     </style>
@@ -219,53 +181,47 @@
     </header>
 
     <section id="projects">
-        <div class="carousel">
-            <div class="carousel-track">
-                <div class="carousel-item">
-                    <h2 class="project-title">Anganwadi Management System</h2>
-                    <p class="project-description">A web-based system to manage Anganwadi centers across Kerala, including child registration, vaccine tracking, and staff management.</p>
-                </div>
-                <div class="carousel-item">
-                    <h2 class="project-title">Cybersecurity Dashboard</h2>
-                    <p class="project-description">A security dashboard for monitoring network threats, log analysis, and system vulnerabilities.</p>
-                </div>
-                <div class="carousel-item">
-                    <h2 class="project-title">SIEM Log Analyzer</h2>
-                    <p class="project-description">A log analysis tool integrated with Wazuh and Splunk for security monitoring and event detection.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="carousel-buttons">
-            <button class="carousel-button" onclick="prevSlide()">&#10094;</button>
-            <button class="carousel-button" onclick="nextSlide()">&#10095;</button>
+        <div class="projects-container" id="projectsContainer">
+            <!-- Dynamic projects will be added here -->
         </div>
     </section>
 
     <script>
-        // Navbar Toggle for Mobile View
+        // Projects Data
+        const projects = [
+            { title: 'Anganwadi Management System', description: 'A web application to manage Anganwadi centers across Kerala.' },
+            { title: 'Cybersecurity Dashboard', description: 'A security analytics platform for monitoring threats and vulnerabilities.' },
+            { title: 'Vaccine Booking System', description: 'A Django-based vaccine scheduling and certificate management system.' },
+            { title: 'E-Commerce Web App', description: 'An online store with secure payment integration.' },
+            { title: 'Python Web Scraper', description: 'Automates data extraction from various websites for research and analysis.' }
+        ];
+
+        // Function to Render Projects
+        function renderProjects() {
+            const container = document.getElementById('projectsContainer');
+            container.innerHTML = ''; // Clear previous content
+
+            projects.forEach((project) => {
+                const projectBox = document.createElement('div');
+                projectBox.classList.add('project-box');
+
+                projectBox.innerHTML = `
+                    <div class="project-title">${project.title}</div>
+                    <div class="project-description">${project.description}</div>
+                `;
+
+                container.appendChild(projectBox);
+            });
+        }
+
+        // Toggle Menu for Mobile View
         function toggleMenu() {
-            document.querySelector('.navbar').classList.toggle('active');
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('active');
         }
 
-        // Project Carousel Logic
-        let currentIndex = 0;
-        const track = document.querySelector('.carousel-track');
-        const totalItems = document.querySelectorAll('.carousel-item').length;
-
-        function updateCarousel() {
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex === 0) ? totalItems - 1 : currentIndex - 1;
-            updateCarousel();
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex === totalItems - 1) ? 0 : currentIndex + 1;
-            updateCarousel();
-        }
+        // Initialize Projects on Page Load
+        document.addEventListener('DOMContentLoaded', renderProjects);
     </script>
 
 </body>
