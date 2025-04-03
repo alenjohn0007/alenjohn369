@@ -6,27 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills | Alen</title>
 
-    <!-- Favicon and Stylesheets -->
+    <!-- Favicon & External Styles -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
+    
+    <!-- Boxicons & Typed.js -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
-    <!-- External Scripts -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="JAVASCRIPT/matrix.js"></script>
 
     <style>
         /* General body styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            height: 100%;
             background-color: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
         }
 
-        /* Matrix effect */
+        /* Matrix effect canvas */
         canvas {
             position: absolute;
             top: 0;
@@ -36,214 +34,197 @@
             z-index: -1;
         }
 
-        /* Header and Navbar */
+        /* Header & Navbar */
         header {
             width: 100%;
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #222;
-            padding: 15px 20px;
+            background-color: #333;
+            padding: 20px;
             z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .logo {
             color: #fff;
-            font-size: 24px;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 30px;
         }
 
         .navbar a {
             color: #fff;
-            padding: 10px 15px;
+            padding: 10px 20px;
             text-decoration: none;
+            margin: 0 10px;
             font-size: 16px;
-            transition: 0.3s;
         }
 
-        .navbar a:hover,
-        .navbar .active {
-            background-color: #007BFF;
+        .navbar a:hover {
+            background-color: #575757;
             border-radius: 5px;
         }
 
-        /* Skills Section */
+        /* Section Container */
         section {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             text-align: center;
             height: 100vh;
-            padding: 40px;
+            padding: 60px 20px;
             margin-top: 80px;
+            background-color: #0a0a0a;
         }
 
+        /* Skills Grid */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             max-width: 1200px;
             width: 100%;
         }
 
+        /* Skill Box */
         .skill-box {
-            background-color: #333;
+            background-color: #222;
             padding: 30px;
             border-radius: 10px;
             text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s, background-color 0.3s;
+            transition: 0.3s;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInBox 1s forwards;
         }
 
-        /* Hover Effect */
+        /* Hover Effects */
         .skill-box:hover {
             transform: scale(1.05);
-            background-color: #007BFF;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+        }
+
+        /* Click Animation */
+        .skill-box:active {
+            transform: scale(0.95);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        .skill-box {
+            animation: float 4s infinite ease-in-out;
+        }
+
+        /* Fade-in Effect */
+        @keyframes fadeInBox {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         /* Skill Icon */
         .skill-icon {
             font-size: 40px;
-            color: #007BFF;
+            color: #00FFFF;
             margin-bottom: 20px;
         }
 
-        .skill-box:hover .skill-icon {
-            color: #fff;
-        }
-
+        /* Skill Title */
         .skill-title {
             font-size: 24px;
             margin-bottom: 10px;
-            font-weight: bold;
         }
 
+        /* Skill Description */
         .skill-description {
             font-size: 16px;
             color: #ccc;
-            min-height: 40px;
-        }
-
-        /* Animation */
-        @keyframes fadeInBox {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Pop-up Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #222;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-            z-index: 200;
-        }
-
-        .modal .close {
-            color: #ff3b3b;
-            font-size: 22px;
-            cursor: pointer;
-            float: right;
         }
 
     </style>
 </head>
 <body>
 
+    <!-- Matrix Effect -->
     <canvas id="matrixCanvas"></canvas>
 
-    <header class="header">
+    <header>
         <a href="index.html" class="logo">Portfolio | Alen</a>
         <nav class="navbar">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="skill.html" class="active">Skills</a>
+            <a href="skills.html" class="active">Skills</a>
             <a href="projects.html">Projects</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <section id="skills">
+        <h1>My Skills</h1>
         <div class="skills-container">
-            <!-- Skill Template -->
-            <div class="skill-box" onclick="openModal('Cybersecurity')">
+            
+            <!-- Skill 1 -->
+            <div class="skill-box">
                 <div class="skill-icon"><i class='bx bxs-lock-alt'></i></div>
                 <div class="skill-title">Cybersecurity</div>
-                <div class="skill-description"></div>
+                <div class="skill-description">Network security, vulnerability assessments, penetration testing.</div>
             </div>
 
-            <div class="skill-box" onclick="openModal('Python')">
+            <!-- Skill 2 -->
+            <div class="skill-box">
                 <div class="skill-icon"><i class='bx bxl-python'></i></div>
                 <div class="skill-title">Python</div>
-                <div class="skill-description"></div>
+                <div class="skill-description">Automation, data analysis, scripting for security tools.</div>
             </div>
 
-            <div class="skill-box" onclick="openModal('Linux')">
+            <!-- Skill 3 -->
+            <div class="skill-box">
                 <div class="skill-icon"><i class='bx bxs-server'></i></div>
                 <div class="skill-title">Linux</div>
-                <div class="skill-description"></div>
+                <div class="skill-description">Linux administration, shell scripting, penetration testing.</div>
             </div>
+
+            <!-- Skill 4 -->
+            <div class="skill-box">
+                <div class="skill-icon"><i class='bx bxl-docker'></i></div>
+                <div class="skill-title">Docker</div>
+                <div class="skill-description">Containerization and environment management.</div>
+            </div>
+
+            <!-- Skill 5 -->
+            <div class="skill-box">
+                <div class="skill-icon"><i class='bx bx-shield'></i></div>
+                <div class="skill-title">Wazuh SIEM</div>
+                <div class="skill-description">Security Information and Event Management.</div>
+            </div>
+
+            <!-- Skill 6 -->
+            <div class="skill-box">
+                <div class="skill-icon"><i class='bx bx-shield-alt'></i></div>
+                <div class="skill-title">Splunk SIEM</div>
+                <div class="skill-description">Security data analysis, alerting, monitoring.</div>
+            </div>
+
+            <!-- Skill 7 -->
+            <div class="skill-box">
+                <div class="skill-icon"><i class='bx bx-archive'></i></div>
+                <div class="skill-title">Log Analysis</div>
+                <div class="skill-description">Analyzing logs for security incidents.</div>
+            </div>
+
+            <!-- Skill 8 -->
+            <div class="skill-box">
+                <div class="skill-icon"><i class='bx bxs-shield'></i></div>
+                <div class="skill-title">Threat Defense</div>
+                <div class="skill-description">Threat intelligence, prevention, defense strategies.</div>
+            </div>
+
         </div>
     </section>
-
-    <!-- Modal for Skill Details -->
-    <div id="skillModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle"></h2>
-        <p id="modalContent"></p>
-    </div>
-
-    <script>
-        // Skill Descriptions
-        const skills = {
-            "Cybersecurity": "Proficient in penetration testing, vulnerability assessments, and security research.",
-            "Python": "Expertise in scripting for automation, data analysis, and cybersecurity applications.",
-            "Linux": "Strong knowledge of Linux OS, security configurations, and ethical hacking tools."
-        };
-
-        // Typing Effect
-        document.addEventListener("DOMContentLoaded", function() {
-            let descriptions = document.querySelectorAll(".skill-description");
-            let skillNames = Object.keys(skills);
-            descriptions.forEach((desc, index) => {
-                new Typed(desc, {
-                    strings: [skills[skillNames[index]]],
-                    typeSpeed: 50,
-                    showCursor: false,
-                });
-            });
-        });
-
-        // Modal Functionality
-        function openModal(skill) {
-            document.getElementById("modalTitle").innerText = skill;
-            document.getElementById("modalContent").innerText = skills[skill];
-            document.getElementById("skillModal").style.display = "block";
-        }
-
-        function closeModal() {
-            document.getElementById("skillModal").style.display = "none";
-        }
-    </script>
 
 </body>
 </html>
