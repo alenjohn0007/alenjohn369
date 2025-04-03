@@ -34,19 +34,26 @@
             padding: 15px 20px;
             z-index: 1000;
             backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .header .logo {
             color: #fff;
             text-decoration: none;
-            font-size: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar {
+            display: flex;
         }
 
         .navbar a {
             color: #fff;
-            padding: 10px 20px;
+            padding: 10px 15px;
             text-decoration: none;
-            margin: 0 10px;
             font-size: 16px;
             transition: 0.3s ease-in-out;
         }
@@ -78,14 +85,72 @@
             font-size: 24px;
             font-weight: bold;
             color: #00ffcc;
+            min-height: 30px; /* Prevents text shifting */
         }
 
         /* Glow Effect on Hover */
+        .fadeInPoint {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fadeInPoint.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .fadeInPoint:hover {
             transform: scale(1.05);
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
         }
 
+        /* Responsive Design */
+        @media screen and (max-width: 1024px) {
+            section {
+                padding: 20px;
+                height: auto;
+            }
+            .about-content {
+                max-width: 90%;
+                padding: 15px;
+            }
+            .navbar a {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .about-content {
+                font-size: 14px;
+            }
+            .typing {
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .header .logo {
+                font-size: 20px;
+            }
+            .about-content {
+                max-width: 95%;
+                padding: 10px;
+                font-size: 12px;
+            }
+            .typing {
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -147,10 +212,24 @@
         document.addEventListener("DOMContentLoaded", function () {
             var typed = new Typed(".typing", {
                 strings: ["Cybersecurity Enthusiast.", "Ethical Hacker.", "Security Researcher."],
-                typeSpeed: 50,  // Faster typing
+                typeSpeed: 50,
                 backSpeed: 30,
                 loop: true
             });
+
+            // Fade-in effect on scroll
+            function fadeInElements() {
+                let elements = document.querySelectorAll('.fadeInPoint');
+                elements.forEach(el => {
+                    let rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8) {
+                        el.classList.add('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', fadeInElements);
+            fadeInElements(); // Initial check
         });
     </script>
 
