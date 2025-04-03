@@ -203,7 +203,7 @@
         let autoSlide;
 
         function updateCarousel() {
-            track.style.transform = translateX(-${index * 100}%);
+            track.style.transform = `translateX(-${index * 100}%)`;
             updateIndicators();
         }
 
@@ -256,7 +256,9 @@
             });
         }
 
-        startAutoSlide();
+        document.addEventListener("DOMContentLoaded", () => {
+            startAutoSlide();
+        });
     </script>
 </body>
 </html>
