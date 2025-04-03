@@ -24,6 +24,7 @@
             background-color: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Matrix Effect */
@@ -84,62 +85,38 @@
             max-width: 800px;
             padding: 20px;
             opacity: 0;
-            animation: fadeIn 1s forwards;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
 
-        /* Fade-in Effects */
-        .fadeInPoint {
-            opacity: 0;
-            animation: fadeInPoint 1s ease-in forwards;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* New Scroll Animation */
+        .slideIn {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
-
-        /* Delayed Fade-in */
-        .fadeInPoint:nth-child(1) { animation-delay: 0.5s; }
-        .fadeInPoint:nth-child(2) { animation-delay: 1s; }
-        .fadeInPoint:nth-child(3) { animation-delay: 1.5s; }
-        .fadeInPoint:nth-child(4) { animation-delay: 2s; }
-        .fadeInPoint:nth-child(5) { animation-delay: 2.5s; }
-        .fadeInPoint:nth-child(6) { animation-delay: 3s; }
 
         /* Hover Effect */
+        .fadeInPoint {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
         .fadeInPoint:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Typing Effect */
+        .typing {
+            font-size: 36px;
+            font-weight: bold;
+            color: #fff;
         }
 
         /* Keyframes */
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
-        }
-
-        @keyframes fadeInPoint {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Headings */
-        h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        /* Paragraphs */
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin: 10px 0;
-        }
-
-        /* Links */
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -152,17 +129,17 @@
         <a href="index.html" class="logo">Portfolio | Alen</a>
 
         <nav class="navbar">
-            <a href="index.html" style="--i:1;">Home</a>
-            <a href="about.html" style="--i:2;" class="active">About</a>
-            <a href="skill.html" style="--i:3;">Skills</a>
-            <a href="projects.html" style="--i:4;">Projects</a>
-            <a href="contact.html" style="--i:5;">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="skill.html">Skills</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <section id="about">
-        <div class="about-content" data-scroll data-scroll-speed="-5">
-            <h2>About Me</h2>
+        <div class="about-content">
+            <h2 class="typing"></h2>
 
             <p class="fadeInPoint">
                 Hello! I'm Alen John. I'm passionate about cybersecurity and ethical hacking. I specialize in monitoring security incidents, detecting threats, and conducting penetration tests.
@@ -193,6 +170,27 @@
             </p>
         </div>
     </section>
+
+    <script>
+        // Typing Effect
+        var typed = new Typed('.typing', {
+            strings: ["About Me"],
+            typeSpeed: 100,
+            backSpeed: 50,
+            loop: false
+        });
+
+        // Scroll Animation
+        document.addEventListener("scroll", function () {
+            let aboutContent = document.querySelector(".about-content");
+            let position = aboutContent.getBoundingClientRect().top;
+            let screenPosition = window.innerHeight / 1.2;
+
+            if (position < screenPosition) {
+                aboutContent.classList.add("slideIn");
+            }
+        });
+    </script>
 
 </body>
 </html>
