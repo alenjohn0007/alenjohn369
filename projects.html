@@ -34,7 +34,6 @@
             position: fixed;
             top: 0;
             left: 0;
-            background: transparent;
             background: linear-gradient(45deg, rgba(0, 0, 0, 0.548), green, rgba(0, 0, 0, 0.548));
             padding: 15px 20px;
             z-index: 1000;
@@ -43,16 +42,14 @@
             justify-content: space-between;
             align-items: center;
         }
-        .header .logo {
+        .logo {
             color: #fff;
             text-decoration: none;
             font-size: 24px;
         }
-
         .navbar {
             display: flex;
         }
-
         .navbar a {
             color: #fff;
             padding: 10px 20px;
@@ -60,103 +57,48 @@
             margin: 0 10px;
             font-size: 16px;
         }
-
         .navbar a:hover {
             background-color: #575757;
             border-radius: 5px;
         }
 
-        /* Project Section */
-        section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 80px 20px;
-            margin-top: 80px;
-        }
-
-        .carousel {
-            display: flex;
-            overflow: hidden;
-            width: 80%;
-            max-width: 1200px;
-            position: relative;
-            border-radius: 10px;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-item {
-            min-width: 100%;
-            box-sizing: border-box;
-            text-align: center;
-            background-color: #222;
-            padding: 40px;
-            border-radius: 10px;
-            position: relative;
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
             cursor: pointer;
-        }
-
-        .project-title {
             font-size: 24px;
-            margin-bottom: 10px;
-            transition: color 0.3s ease-in-out;
+            color: white;
         }
 
-        .project-title:hover {
-            color: #1edb09;
-        }
-
-        .project-description {
-            font-size: 16px;
-            color: #ccc;
-            margin-top: 10px;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            text-align: center;
-        }
-
-        .carousel-item:hover .project-description {
-            opacity: 1;
-        }
-
-        /* Buttons */
-        .carousel-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .carousel-button {
-            background-color: #fff;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: 0.3s ease;
-        }
-
-        .carousel-button:hover {
-            background-color: #1edb09;
-            color: #fff;
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                text-align: center;
+                padding: 10px 0;
+            }
+            .navbar.active {
+                display: flex;
+            }
+            .navbar a {
+                display: block;
+                margin: 10px 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
     <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <nav class="navbar">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -182,18 +124,9 @@
                     <div class="project-title">Wazuh Windows 11 Monitoring</div>
                     <div class="project-description">Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</div>
                 </div>
-                <div class="carousel-item">
-                    <div class="project-title">BCA Project - Latex Sales and Service System</div>
-                    <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="project-title">VAPT Project</div>
-                    <div class="project-description">Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</div>
-                </div>
             </div>
         </div>
 
-        <!-- Buttons -->
         <div class="carousel-buttons">
             <button class="carousel-button" onclick="prevSlide()">Prev</button>
             <button class="carousel-button" onclick="nextSlide()">Next</button>
@@ -220,8 +153,11 @@
             updateSlide();
         }
 
-        // Auto slide every 3 seconds
         setInterval(nextSlide, 3000);
+
+        function toggleMenu() {
+            document.querySelector('.navbar').classList.toggle('active');
+        }
     </script>
 </body>
 </html>
