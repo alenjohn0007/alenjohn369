@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Alen</title>
 
-    <!-- Correct path to favicon and CSS -->
+    <!-- Favicon and External CSS -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
     
@@ -67,7 +67,7 @@
         }
 
         .contact-item {
-            background-color: #222;
+            background: linear-gradient(135deg, #1a1a1a, #222);
             padding: 20px;
             border-radius: 10px;
             width: 80%;
@@ -76,12 +76,35 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 79, 79, 0.3) 0%, transparent 60%);
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+        }
+
+        .contact-item:hover::before {
+            opacity: 1;
         }
 
         .contact-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 0px 15px rgba(255, 79, 79, 0.7);
+            transform: scale(1.08);
+            box-shadow: 0px 0px 20px rgba(255, 79, 79, 0.9);
+            background: linear-gradient(135deg, #222, #333);
+        }
+
+        .contact-item:active {
+            transform: scale(0.95);
         }
 
         .contact-item a {
@@ -95,12 +118,25 @@
         .contact-item i {
             font-size: 24px;
             margin-right: 10px;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
         }
 
         .contact-item:hover i {
             transform: rotate(360deg);
             color: #ff4f4f;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .contact-item {
+            animation: float 3s ease-in-out infinite;
         }
 
     </style>
