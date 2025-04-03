@@ -4,99 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Alen</title>
+
+    <!-- Favicon and External Styles -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- External Libraries -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
     <style>
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            height: 100%;
             background-color: #0a0a0a;
             color: #fff;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-in-out forwards;
+            overflow-x: hidden;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        header {
+        /* Navbar Styling */
+        .header {
             width: 100%;
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #333;
-            padding: 20px;
-            z-index: 100;
+            background-color: rgba(51, 51, 51, 0.9);
+            padding: 15px 20px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header .logo {
-            color: #fff;
+        .logo {
+            font-size: 24px;
+            color: white;
             text-decoration: none;
-            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 15px;
         }
 
         .navbar a {
             color: #fff;
-            padding: 10px 20px;
             text-decoration: none;
-            margin: 0 10px;
+            padding: 10px 15px;
             font-size: 16px;
+            transition: 0.3s;
         }
 
-        .navbar a:hover, .active {
+        .navbar a:hover {
             background-color: #575757;
             border-radius: 5px;
         }
 
-        section {
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .project-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .project-card {
-            background: #222;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: scale(1.05);
-        }
-
-        .project-title {
-            font-size: 22px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            color: #1edb09;
-        }
-
-        .project-description {
-            font-size: 16px;
-            color: #ccc;
+        /* Hamburger Icon */
+        .menu-icon {
             display: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
         }
 
-        .project-card:hover .project-description {
-            display: block;
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: rgba(51, 51, 51, 0.9);
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .navbar a {
+                display: block;
+                padding: 10px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+        }
+
+        /* Projects Section */
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            padding: 40px;
+            margin-top: 80px;
+            background-color: #0a0a0a;
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            width: 100%;
         }
     </style>
 </head>
 <body>
+
     <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
+
+        <!-- Hamburger Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
         <nav class="navbar">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -107,29 +135,19 @@
     </header>
 
     <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project-container">
-            <div class="project-card">
-                <div class="project-title">SOC Project - Website Log Monitoring Using Splunk</div>
-                <div class="project-description">Deploying WordPress on Ubuntu and monitoring its logs using Splunk for real-time security analysis.</div>
-            </div>
-            <div class="project-card">
-                <div class="project-title">MCA Project - Anganwadi Management System</div>
-                <div class="project-description">A web-based system to manage Anganwadi centers, including child registration, staff scheduling, and vaccination tracking.</div>
-            </div>
-            <div class="project-card">
-                <div class="project-title">Wazuh Windows 11 Monitoring</div>
-                <div class="project-description">Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</div>
-            </div>
-            <div class="project-card">
-                <div class="project-title">BCA Project - Latex Sales and Service System</div>
-                <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
-            </div>
-            <div class="project-card">
-                <div class="project-title">VAPT Project</div>
-                <div class="project-description">Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</div>
-            </div>
+        <div class="projects-container">
+            <h2>My Projects</h2>
+            <p>Here are some of the projects I have worked on.</p>
+            <!-- Project details will be added dynamically -->
         </div>
     </section>
+
+    <script>
+        // Toggle Menu for Mobile View
+        function toggleMenu() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
