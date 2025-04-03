@@ -6,111 +6,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Alen</title>
 
+    <!-- Correct path to favicon and CSS -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- External CSS (boxicons) -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <style>
-        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
+            height: 100%;
             background-color: #0a0a0a;
             color: #fff;
             opacity: 0;
             animation: fadeIn 1.5s ease-in-out forwards;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* Header & Navbar */
         header {
             width: 100%;
             position: fixed;
             top: 0;
             left: 0;
             background-color: #333;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 20px;
             z-index: 100;
         }
-        .logo {
+
+        .header .logo {
             color: #fff;
-            font-size: 24px;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 30px;
         }
-        .navbar {
-            display: flex;
-        }
+
         .navbar a {
             color: #fff;
-            padding: 10px 15px;
+            padding: 10px 20px;
             text-decoration: none;
+            margin: 0 10px;
             font-size: 16px;
-            transition: 0.3s;
         }
-        .navbar a:hover, 
-        .navbar a.active {
-            background-color: #1edb09;
+
+        .navbar a:hover {
+            background-color: #575757;
             border-radius: 5px;
-            color: #000;
         }
 
-        /* Section & Project Cards */
         section {
-            padding: 100px 20px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-        }
-        h2 {
-            font-size: 28px;
-            color: #1edb09;
-            margin-bottom: 20px;
-        }
-        .project {
-            background-color: #222;
-            padding: 20px;
-            margin: 20px auto;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 800px;
-            text-align: left;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .project.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .project h3 {
-            color: #1edb09;
-        }
-        .project p {
-            color: #ccc;
+            padding: 80px 20px;
+            margin-top: 80px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: center;
-            }
-            .navbar a {
-                padding: 10px;
-                width: 100%;
-                text-align: center;
-            }
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 80%;
+            max-width: 1200px;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: #222;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .project-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .project-title:hover {
+            color: #1edb09;
+        }
+
+        .project-description {
+            display: none;
+            font-size: 16px;
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        .project-title:hover + .project-description {
+            display: block;
+        }
+
+        .carousel-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+
+        .indicators {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .indicator {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            display: inline-block;
+            border-radius: 50%;
+            background-color: gray;
+            cursor: pointer;
+        }
+
+        .active-indicator {
+            background-color: white;
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
+    <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
         <nav class="navbar">
             <a href="index.html">Home</a>
@@ -121,51 +160,103 @@
         </nav>
     </header>
 
-    <!-- Projects Section -->
     <section id="projects">
         <h2>My Projects</h2>
-        
-        <div class="project">
-            <h3>SOC Project - Website Log Monitoring Using Splunk</h3>
-            <p>Deploying WordPress on Ubuntu and monitoring its logs using Splunk for real-time security analysis.</p>
+        <div class="carousel">
+            <div class="carousel-track">
+                <div class="carousel-item">
+                    <div class="project-title">SOC Project - Website Log Monitoring Using Splunk</div>
+                    <div class="project-description">Deploying WordPress on Ubuntu and monitoring its logs using Splunk for real-time security analysis.</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="project-title">MCA Project - Anganwadi Management System</div>
+                    <div class="project-description">A web-based system to manage Anganwadi centers, including child registration, staff scheduling, and vaccination tracking.</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="project-title">Wazuh Windows 11 Monitoring</div>
+                    <div class="project-description">Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="project-title">BCA Project - Latex Sales and Service System</div>
+                    <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="project-title">VAPT Project</div>
+                    <div class="project-description">Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</div>
+                </div>
+            </div>
         </div>
-        
-        <div class="project">
-            <h3>MCA Project - Anganwadi Management System</h3>
-            <p>A web-based system to manage Anganwadi centers, including child registration, staff scheduling, and vaccination tracking.</p>
+        <div class="carousel-buttons">
+            <button class="carousel-button" id="prev">❮</button>
+            <button class="carousel-button" id="next">❯</button>
         </div>
-        
-        <div class="project">
-            <h3>Wazuh Windows 11 Monitoring</h3>
-            <p>Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</p>
-        </div>
-        
-        <div class="project">
-            <h3>BCA Project - Latex Sales and Service System</h3>
-            <p>A web application for managing latex product sales and service tracking for customers.</p>
-        </div>
-        
-        <div class="project">
-            <h3>VAPT Project</h3>
-            <p>Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</p>
-        </div>
+        <div class="indicators"></div>
     </section>
 
-    <!-- JavaScript for Smooth Project Transitions -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const projects = document.querySelectorAll(".project");
+        const track = document.querySelector('.carousel-track');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        const items = document.querySelectorAll('.carousel-item');
+        const indicatorsContainer = document.querySelector('.indicators');
+        let index = 0;
+        let autoSlide;
 
-            function revealProjects() {
-                projects.forEach((project, index) => {
-                    setTimeout(() => {
-                        project.classList.add("show");
-                    }, index * 300);
-                });
-            }
+        function updateCarousel() {
+            track.style.transform = translateX(-${index * 100}%);
+            updateIndicators();
+        }
 
-            revealProjects();
+        function nextSlide() {
+            index = (index + 1) % items.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            index = (index - 1 + items.length) % items.length;
+            updateCarousel();
+        }
+
+        function startAutoSlide() {
+            autoSlide = setInterval(nextSlide, 3000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlide);
+        }
+
+        prevButton.addEventListener('click', prevSlide);
+        nextButton.addEventListener('click', nextSlide);
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') nextSlide();
+            if (event.key === 'ArrowLeft') prevSlide();
         });
+
+        track.addEventListener('mouseenter', stopAutoSlide);
+        track.addEventListener('mouseleave', startAutoSlide);
+
+        items.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.classList.add('indicator');
+            if (i === 0) dot.classList.add('active-indicator');
+            dot.setAttribute('data-index', i);
+
+            dot.addEventListener('click', (e) => {
+                index = parseInt(e.target.getAttribute('data-index'));
+                updateCarousel();
+            });
+
+            indicatorsContainer.appendChild(dot);
+        });
+
+        function updateIndicators() {
+            document.querySelectorAll('.indicator').forEach((dot, i) => {
+                dot.classList.toggle('active-indicator', i === index);
+            });
+        }
+
+        startAutoSlide();
     </script>
 </body>
 </html>
