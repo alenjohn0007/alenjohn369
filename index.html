@@ -14,30 +14,6 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
-    <style>
-        /* Prevent text shifting issue */
-        .pro-text-container {
-            display: inline-block;
-            width: 220px; /* Adjust width based on the longest text */
-            text-align: left;
-            overflow: hidden;
-            white-space: nowrap;
-            font-weight: bold;
-        }
-
-        /* Responsive Fixes */
-        @media screen and (max-width: 768px) {
-            .home-content {
-                text-align: center;
-            }
-            .home-sci {
-                display: flex;
-                justify-content: center;
-                gap: 15px;
-            }
-        }
-    </style>
-
 </head>
 <body>
 
@@ -58,24 +34,44 @@
     </header>
 
     <section id="home" class="home">
+
         <div class="home-content" data-scroll data-scroll-speed="-5">
             <h3 class="mu">Hello, It's me</h3>
             <h1>Alen John</h1>
-            <h3>And I'm a <span class="pro-text-container"><span class="pro-text"></span></span></h3>
-
+            <h3>And I'm a <span class="pro-text">
+                <script>
+                   var typed = new Typed(".pro-text", {
+                      strings: [
+                        "SOC Analyst",
+                        "Ethical Hacker",
+                        "Security Researcher",
+                        "Incident Responder",
+                        "Web Developer"
+                      ],
+                      typeSpeed: 100,   
+                      backSpeed: 100,   
+                      backDelay: 1000,  
+                      loop: true        
+                    });
+                </script>
+            </span></h3>
+            
             <p>
-                &emsp; &emsp;This portfolio highlights my passion for <strong>cybersecurity</strong>, my expertise in monitoring and defending against security incidents, and my skills in ethical hacking.<br><br>
+                &emsp; &emsp;This portfolio highlights my passion for **cybersecurity**, my expertise in monitoring and defending against security incidents, and my skills in ethical hacking.<br><br>
                 &emsp; &emsp;I have practical experience in identifying threats, conducting security assessments, and responding to incidents that target networks, applications, and systems.<br><br>
                 &emsp; &emsp;I’m constantly learning and improving my skills in SOC, penetration testing, and developing security solutions to mitigate risks and vulnerabilities.<br>
             </p>
 
             <div class="home-sci">
+                <!-- Updated social media links -->
                 <a href="https://github.com/alenjohn0007" target="_blank"><i class='bx bxl-github'></i></a>
                 <a href="https://www.linkedin.com/in/alenjohn9404/" target="_blank"><i class='bx bxl-linkedin' ></i></a>
                 <a href="https://wa.me/918848603693" target="_blank"><i class='bx bxl-whatsapp'></i></a>
-            </div>
+                           </div>
+           <a href="Alen John_Resume.pdf" class="btn-box" download>Download CV</a>
 
-            <a href="Alen John_Resume.pdf" class="btn-box" download>Download CV</a>
+        </div>
+            </div>
         </div>
 
         <div class="home-img">
@@ -89,30 +85,6 @@
         </div>
 
     </section>
-
-    <script>
-        // Set a fixed width to prevent shifting
-        document.addEventListener("DOMContentLoaded", function () {
-            let longestWord = "Security Researcher"; // Set the longest text here
-            let container = document.querySelector(".pro-text-container");
-            let testSpan = document.createElement("span");
-            testSpan.style.visibility = "hidden";
-            testSpan.style.whiteSpace = "nowrap";
-            testSpan.textContent = longestWord;
-            container.appendChild(testSpan);
-            container.style.width = testSpan.offsetWidth + "px";
-            testSpan.remove();
-
-            // Typed.js animation
-            var typed = new Typed(".pro-text", {
-                strings: ["SOC Analyst", "Ethical Hacker", "Security Researcher", "Incident Responder", "Web Developer"],
-                typeSpeed: 100,
-                backSpeed: 100,
-                backDelay: 1000,
-                loop: true
-            });
-        });
-    </script>
 
 </body> 
 </html>
