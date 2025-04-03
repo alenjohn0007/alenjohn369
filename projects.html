@@ -116,6 +116,7 @@
             margin-top: 80px;
         }
 
+        /* Carousel Styles */
         .carousel {
             display: flex;
             overflow: hidden;
@@ -123,6 +124,7 @@
             max-width: 1200px;
             position: relative;
             border-radius: 10px;
+            border: 2px solid #1edb09;
         }
 
         .carousel-track {
@@ -226,14 +228,6 @@
                     <div class="project-title">Wazuh Windows 11 Monitoring</div>
                     <div class="project-description">Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</div>
                 </div>
-                <div class="carousel-item">
-                    <div class="project-title">BCA Project - Latex Sales and Service System</div>
-                    <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="project-title">VAPT Project</div>
-                    <div class="project-description">Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</div>
-                </div>
             </div>
         </div>
         <div class="carousel-buttons">
@@ -247,6 +241,42 @@
         function toggleMenu() {
             document.querySelector('.navbar').classList.toggle('active');
         }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const track = document.querySelector(".carousel-track");
+            const slides = Array.from(track.children);
+            const nextButton = document.getElementById("next");
+            const prevButton = document.getElementById("prev");
+            const indicatorsContainer = document.querySelector(".indicators");
+
+            let currentIndex = 0;
+
+            slides.forEach((_, index) => {
+                const indicator = document.createElement("span");
+                indicator.classList.add("indicator");
+                if (index === 0) indicator.classList.add("active-indicator");
+                indicator.dataset.index = index;
+                indicatorsContainer.appendChild(indicator);
+            });
+
+            function updateCarousel() {
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+                document.querySelectorAll(".indicator").forEach((dot, index) => {
+                    dot.classList.toggle("active-indicator", index === currentIndex);
+                });
+            }
+
+            nextButton.onclick = () => { currentIndex = (currentIndex + 1) % slides.length; updateCarousel(); };
+            prevButton.onclick = () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateCarousel(); };
+
+            document.querySelectorAll(".indicator").forEach(dot => {
+                dot.onclick = () => { currentIndex = Number(dot.dataset.index); updateCarousel(); };
+            });
+
+            updateCarousel();
+        });
     </script>
 </body>
 </html>
