@@ -2,175 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Alen</title>
 
-    <!-- Favicon and External Styles -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
-
-    <!-- External Libraries -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <style>
-        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            height: 100%;
             background-color: #0a0a0a;
             color: #fff;
-            overflow-x: hidden;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
         }
-
-        /* Navbar Styling */
-        .header {
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header {
             width: 100%;
             position: fixed;
             top: 0;
             left: 0;
-            background-color: rgba(51, 51, 51, 0.9);
-            padding: 15px 20px;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color: #333;
+            padding: 20px;
+            z-index: 100;
         }
-
-        .logo {
-            font-size: 24px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .navbar {
-            display: flex;
-            gap: 15px;
-        }
-
-        .navbar a {
+        .header .logo {
             color: #fff;
             text-decoration: none;
-            padding: 10px 15px;
-            font-size: 16px;
-            transition: 0.3s;
+            font-size: 30px;
         }
-
-        .navbar a:hover, .navbar a.active {
+        .navbar a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        .navbar a:hover {
             background-color: #575757;
             border-radius: 5px;
         }
-
-        /* Mark the active page */
-        .navbar a.active {
-            color: #1edb09;
-            font-weight: bold;
-        }
-
-        /* Hamburger Icon */
-        .menu-icon {
-            display: none;
-            font-size: 28px;
-            color: white;
-            cursor: pointer;
-        }
-
-        @media screen and (max-width: 768px) {
-            .navbar {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background-color: rgba(51, 51, 51, 0.9);
-                width: 100%;
-                text-align: center;
-                padding: 10px 0;
-            }
-
-            .navbar a {
-                display: block;
-                padding: 10px;
-            }
-
-            .menu-icon {
-                display: block;
-            }
-
-            .navbar.active {
-                display: flex;
-            }
-        }
-
-        /* Projects Section */
         section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            height: 100vh;
-            padding: 40px;
+            padding: 80px 20px;
             margin-top: 80px;
-            background-color: #0a0a0a;
-        }
-
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .project-box {
-            background-color: #333;
-            padding: 20px;
-            border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .project-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+        .project {
+            background-color: #222;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            text-align: left;
         }
-
-        .project-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
+        .project h3 {
             color: #1edb09;
         }
-
-        .project-description {
+        .project p {
             color: #ccc;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .projects-container {
-                grid-template-columns: 1fr;
-                padding: 10px;
-            }
-
-            .project-box {
-                padding: 15px;
-            }
         }
     </style>
 </head>
 <body>
-
     <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
-
-        <!-- Hamburger Icon -->
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-
         <nav class="navbar">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -181,48 +83,32 @@
     </header>
 
     <section id="projects">
-        <div class="projects-container" id="projectsContainer">
-            <!-- Dynamic projects will be added here -->
+        <h2>My Projects</h2>
+        
+        <div class="project">
+            <h3>SOC Project - Website Log Monitoring Using Splunk</h3>
+            <p>Deploying WordPress on Ubuntu and monitoring its logs using Splunk for real-time security analysis.</p>
+        </div>
+        
+        <div class="project">
+            <h3>MCA Project - Anganwadi Management System</h3>
+            <p>A web-based system to manage Anganwadi centers, including child registration, staff scheduling, and vaccination tracking.</p>
+        </div>
+        
+        <div class="project">
+            <h3>Wazuh Windows 11 Monitoring</h3>
+            <p>Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</p>
+        </div>
+        
+        <div class="project">
+            <h3>BCA Project - Latex Sales and Service System</h3>
+            <p>A web application for managing latex product sales and service tracking for customers.</p>
+        </div>
+        
+        <div class="project">
+            <h3>VAPT Project</h3>
+            <p>Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</p>
         </div>
     </section>
-
-    <script>
-        // Projects Data
-        const projects = [
-            { title: 'Anganwadi Management System', description: 'A web application to manage Anganwadi centers across Kerala.' },
-            { title: 'Cybersecurity Dashboard', description: 'A security analytics platform for monitoring threats and vulnerabilities.' },
-            { title: 'Vaccine Booking System', description: 'A Django-based vaccine scheduling and certificate management system.' },
-            { title: 'E-Commerce Web App', description: 'An online store with secure payment integration.' },
-            { title: 'Python Web Scraper', description: 'Automates data extraction from various websites for research and analysis.' }
-        ];
-
-        // Function to Render Projects
-        function renderProjects() {
-            const container = document.getElementById('projectsContainer');
-            container.innerHTML = ''; // Clear previous content
-
-            projects.forEach((project) => {
-                const projectBox = document.createElement('div');
-                projectBox.classList.add('project-box');
-
-                projectBox.innerHTML = `
-                    <div class="project-title">${project.title}</div>
-                    <div class="project-description">${project.description}</div>
-                `;
-
-                container.appendChild(projectBox);
-            });
-        }
-
-        // Toggle Menu for Mobile View
-        function toggleMenu() {
-            const navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('active');
-        }
-
-        // Initialize Projects on Page Load
-        document.addEventListener('DOMContentLoaded', renderProjects);
-    </script>
-
 </body>
 </html>
