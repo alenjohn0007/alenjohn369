@@ -43,16 +43,14 @@
             justify-content: space-between;
             align-items: center;
         }
-        /* Logo on the Left */
+
         .logo {
             font-size: 24px;
             color: white;
             text-decoration: none;
             font-weight: bold;
-        
         }
 
-        /* Navbar Links on the Right */
         .navbar {
             display: flex;
             align-items: center;
@@ -71,7 +69,6 @@
             border-radius: 5px;
         }
 
-        /* Mobile Menu Button */
         .menu-toggle {
             display: none;
             font-size: 28px;
@@ -82,7 +79,6 @@
             top: 15px;
         }
 
-        /* Responsive Navbar */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -167,38 +163,29 @@
         }
 
         /* Carousel Buttons */
-        .carousel-buttons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
         .carousel-button {
-            background-color: #fff;
-            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.5);
+            color: black;
             border: none;
-            padding: 10px 15px;
+            font-size: 20px;
+            padding: 10px;
             cursor: pointer;
-            margin: 0 5px;
-            border-radius: 5px;
-        }
-
-        .indicators {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .indicator {
-            height: 10px;
-            width: 10px;
-            margin: 0 5px;
-            display: inline-block;
             border-radius: 50%;
-            background-color: gray;
-            cursor: pointer;
+            z-index: 10;
         }
 
-        .active-indicator {
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .carousel-button:hover {
             background-color: white;
         }
     </style>
@@ -219,6 +206,7 @@
     <section id="projects">
         <h2>My Projects</h2>
         <div class="carousel">
+            <button class="carousel-button prev" onclick="showPrevSlide()">&#10094;</button>
             <div class="carousel-track">
                 <div class="carousel-item">
                     <div class="project-title">SOC Project - Website Log Monitoring Using Splunk</div>
@@ -241,6 +229,7 @@
                     <div class="project-description">Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</div>
                 </div>
             </div>
+            <button class="carousel-button next" onclick="showNextSlide()">&#10095;</button>
         </div>
     </section>
 
@@ -254,12 +243,21 @@
         const items = document.querySelectorAll('.carousel-item');
         const totalItems = items.length;
 
-        function showNextSlide() {
-            index = (index + 1) % totalItems;
+        function updateSlidePosition() {
             track.style.transform = `translateX(-${index * 100}%)`;
         }
 
-        setInterval(showNextSlide, 3000); // Auto-slide every 3 seconds
+        function showNextSlide() {
+            index = (index + 1) % totalItems;
+            updateSlidePosition();
+        }
+
+        function showPrevSlide() {
+            index = (index - 1 + totalItems) % totalItems;
+            updateSlidePosition();
+        }
+
+        setInterval(showNextSlide, 3000);
     </script>
 </body>
 </html>
