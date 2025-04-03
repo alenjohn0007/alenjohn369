@@ -4,109 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Alen</title>
+    <title>Projects | Portfolio</title>
 
-    <!-- Favicon and CSS -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
-
-    <!-- Boxicons for icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    
     <style>
-        /* Basic Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
+            height: 100%;
             background-color: #0a0a0a;
             color: #fff;
-            opacity: 0;
             animation: fadeIn 1.5s ease-in-out forwards;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
-        /* Navbar Styling */
-        .header {
+        header {
             width: 100%;
             position: fixed;
             top: 0;
             left: 0;
-            background-color: rgba(51, 51, 51, 0.9);
-            padding: 15px 20px;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color: #333;
+            padding: 20px;
+            z-index: 100;
         }
-
-        .logo {
-            font-size: 24px;
-            color: white;
+        .header .logo {
+            color: #fff;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 30px;
         }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-        }
-
         .navbar a {
             color: #fff;
             padding: 10px 20px;
             text-decoration: none;
+            margin: 0 10px;
             font-size: 16px;
         }
-
         .navbar a:hover {
             background-color: #575757;
             border-radius: 5px;
         }
-
-        .menu-toggle {
-            display: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: #fff;
-            position: absolute;
-            right: 20px;
-            top: 15px;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .navbar {
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                flex-direction: column;
-                background: #222;
-                text-align: center;
-                display: none;
-            }
-
-            .navbar a {
-                display: block;
-                padding: 15px;
-                border-bottom: 1px solid #444;
-            }
-
-            .navbar.active {
-                display: flex;
-            }
-        }
-
-        /* Section Styling */
         section {
             display: flex;
             flex-direction: column;
@@ -115,8 +56,6 @@
             padding: 80px 20px;
             margin-top: 80px;
         }
-
-        /* Carousel */
         .carousel {
             display: flex;
             overflow: hidden;
@@ -125,12 +64,10 @@
             position: relative;
             border-radius: 10px;
         }
-
         .carousel-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
-
         .carousel-item {
             min-width: 100%;
             box-sizing: border-box;
@@ -139,65 +76,62 @@
             padding: 40px;
             border-radius: 10px;
         }
-
         .project-title {
             font-size: 24px;
             margin-bottom: 10px;
             cursor: pointer;
             transition: color 0.3s ease-in-out;
         }
-
         .project-title:hover {
             color: #1edb09;
         }
-
         .project-description {
             display: none;
             font-size: 16px;
             color: #ccc;
             margin-top: 10px;
         }
-
         .project-title:hover + .project-description {
             display: block;
         }
-
-        /* Carousel Buttons */
+        .carousel-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
         .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.5);
-            color: black;
+            background-color: #fff;
+            color: #000;
             border: none;
-            font-size: 20px;
-            padding: 10px;
+            padding: 10px 15px;
             cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+        .indicators {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .indicator {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            display: inline-block;
             border-radius: 50%;
-            z-index: 10;
+            background-color: gray;
+            cursor: pointer;
         }
-
-        .prev {
-            left: 10px;
-        }
-
-        .next {
-            right: 10px;
-        }
-
-        .carousel-button:hover {
+        .active-indicator {
             background-color: white;
         }
     </style>
 </head>
 <body>
     <header class="header">
-        <a href="index.html" class="logo">Portfolio | Alen</a>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <a href="index.html" class="logo">Portfolio</a>
         <nav class="navbar">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="skill.html">Skills</a>
             <a href="projects.html" class="active">Projects</a>
             <a href="contact.html">Contact</a>
         </nav>
@@ -206,58 +140,51 @@
     <section id="projects">
         <h2>My Projects</h2>
         <div class="carousel">
-            <button class="carousel-button prev" onclick="showPrevSlide()">&#10094;</button>
             <div class="carousel-track">
                 <div class="carousel-item">
                     <div class="project-title">SOC Project - Website Log Monitoring Using Splunk</div>
-                    <div class="project-description">Deploying WordPress on Ubuntu and monitoring its logs using Splunk for real-time security analysis.</div>
+                    <div class="project-description">Monitoring website logs using Splunk for real-time security analysis.</div>
                 </div>
                 <div class="carousel-item">
-                    <div class="project-title">MCA Project - Anganwadi Management System</div>
-                    <div class="project-description">A web-based system to manage Anganwadi centers, including child registration, staff scheduling, and vaccination tracking.</div>
+                    <div class="project-title">Anganwadi Management System</div>
+                    <div class="project-description">A web-based system for managing Anganwadi centers and child registration.</div>
                 </div>
                 <div class="carousel-item">
                     <div class="project-title">Wazuh Windows 11 Monitoring</div>
-                    <div class="project-description">Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="project-title">BCA Project - Latex Sales and Service System</div>
-                    <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
+                    <div class="project-description">Monitoring Windows 11 endpoints using Wazuh SIEM.</div>
                 </div>
                 <div class="carousel-item">
                     <div class="project-title">VAPT Project</div>
-                    <div class="project-description">Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</div>
+                    <div class="project-description">Conducting Vulnerability Assessment and Penetration Testing (VAPT) for web security.</div>
                 </div>
             </div>
-            <button class="carousel-button next" onclick="showNextSlide()">&#10095;</button>
         </div>
+        <div class="carousel-buttons">
+            <button class="carousel-button" id="prev">❮</button>
+            <button class="carousel-button" id="next">❯</button>
+        </div>
+        <div class="indicators"></div>
     </section>
 
     <script>
-        function toggleMenu() {
-            document.querySelector('.navbar').classList.toggle('active');
-        }
-
-        let index = 0;
         const track = document.querySelector('.carousel-track');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
         const items = document.querySelectorAll('.carousel-item');
-        const totalItems = items.length;
-
-        function updateSlidePosition() {
+        let index = 0;
+        function updateCarousel() {
             track.style.transform = `translateX(-${index * 100}%)`;
         }
-
-        function showNextSlide() {
-            index = (index + 1) % totalItems;
-            updateSlidePosition();
+        function nextSlide() {
+            index = (index + 1) % items.length;
+            updateCarousel();
         }
-
-        function showPrevSlide() {
-            index = (index - 1 + totalItems) % totalItems;
-            updateSlidePosition();
+        function prevSlide() {
+            index = (index - 1 + items.length) % items.length;
+            updateCarousel();
         }
-
-        setInterval(showNextSlide, 3000);
+        prevButton.addEventListener('click', prevSlide);
+        nextButton.addEventListener('click', nextSlide);
     </script>
 </body>
 </html>
