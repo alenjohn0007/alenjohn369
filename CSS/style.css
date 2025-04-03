@@ -29,13 +29,15 @@ body {
 
 .logo {
     font-size: 25px;
-    color: green;
+    color: white !important; /* Sets the text color to white */
     text-shadow: 5px 5px 10px black;
     text-decoration: none;
     font-weight: 600;
     pointer-events: none;
     opacity: 0;
     animation: slideTop 1s ease forwards;
+}
+
     
 }
 
