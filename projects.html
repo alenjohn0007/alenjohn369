@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Alen</title>
 
-    <!-- Favicon and External CSS -->
+    <!-- Correct path to favicon and CSS -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- External CSS (boxicons) -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <style>
-        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
+            height: 100%;
             background-color: #0a0a0a;
             color: #fff;
             opacity: 0;
@@ -27,93 +29,72 @@
             to { opacity: 1; }
         }
 
-        /* Header and Navigation */
         header {
             width: 100%;
             position: fixed;
             top: 0;
             left: 0;
             background-color: #333;
-            padding: 15px 20px;
-            z-index: 1000;
+            padding: 20px;
+            z-index: 100;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
             color: #fff;
-            font-size: 22px;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 30px;
         }
 
         .navbar {
             display: flex;
+            align-items: center;
         }
 
-        .navbar a {
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
             color: #fff;
-            padding: 10px 15px;
+            padding: 10px 20px;
             text-decoration: none;
+            margin: 0 10px;
             font-size: 16px;
-            transition: 0.3s;
+            transition: background 0.3s ease;
         }
 
-        .navbar a:hover, .navbar a.active {
+        .nav-links a:hover {
             background-color: #575757;
             border-radius: 5px;
         }
 
-        /* Responsive Navbar */
         .menu-toggle {
             display: none;
-            font-size: 24px;
+            background: none;
+            border: none;
             color: #fff;
+            font-size: 28px;
             cursor: pointer;
         }
 
-        @media (max-width: 768px) {
-            .navbar {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background-color: #333;
-                width: 100%;
-                text-align: center;
-                padding: 10px 0;
-            }
-
-            .navbar a {
-                display: block;
-                padding: 12px;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .navbar.active {
-                display: flex;
-            }
-        }
-
-        /* Section Styling */
         section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            padding: 100px 20px;
-            margin-top: 50px;
+            padding: 80px 20px;
+            margin-top: 80px;
         }
 
-        /* Carousel Styling */
         .carousel {
             display: flex;
             overflow: hidden;
             width: 80%;
             max-width: 1200px;
-            margin: auto;
             position: relative;
             border-radius: 10px;
         }
@@ -125,14 +106,15 @@
 
         .carousel-item {
             min-width: 100%;
+            box-sizing: border-box;
+            text-align: center;
             background-color: #222;
             padding: 40px;
             border-radius: 10px;
-            text-align: center;
         }
 
         .project-title {
-            font-size: 22px;
+            font-size: 24px;
             margin-bottom: 10px;
             cursor: pointer;
             transition: color 0.3s ease-in-out;
@@ -153,11 +135,10 @@
             display: block;
         }
 
-        /* Carousel Navigation */
         .carousel-buttons {
             display: flex;
             justify-content: center;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .carousel-button {
@@ -166,11 +147,10 @@
             border: none;
             padding: 10px 15px;
             cursor: pointer;
+            margin: 0 5px;
             border-radius: 5px;
-            font-size: 18px;
         }
 
-        /* Indicators */
         .indicators {
             text-align: center;
             margin-top: 10px;
@@ -189,19 +169,51 @@
         .active-indicator {
             background-color: white;
         }
+
+        /* Responsive Navigation */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #333;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px;
+                font-size: 18px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body>
-
-    <header>
+    <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <nav class="navbar">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="skill.html">Skills</a>
-            <a href="projects.html" class="active">Projects</a>
-            <a href="contact.html">Contact</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skill.html">Skills</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="bx bx-menu"></i>
+            </button>
         </nav>
     </header>
 
@@ -221,6 +233,14 @@
                     <div class="project-title">Wazuh Windows 11 Monitoring</div>
                     <div class="project-description">Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</div>
                 </div>
+                <div class="carousel-item">
+                    <div class="project-title">BCA Project - Latex Sales and Service System</div>
+                    <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="project-title">VAPT Project</div>
+                    <div class="project-description">Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</div>
+                </div>
             </div>
         </div>
         <div class="carousel-buttons">
@@ -231,21 +251,17 @@
     </section>
 
     <script>
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            document.querySelector('.navbar').classList.toggle('active');
-        }
-
-        // Carousel Functionality
         const track = document.querySelector('.carousel-track');
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
         const items = document.querySelectorAll('.carousel-item');
+        const indicatorsContainer = document.querySelector('.indicators');
         let index = 0;
         let autoSlide;
 
         function updateCarousel() {
             track.style.transform = `translateX(-${index * 100}%)`;
+            updateIndicators();
         }
 
         function nextSlide() {
@@ -262,10 +278,49 @@
             autoSlide = setInterval(nextSlide, 3000);
         }
 
+        function stopAutoSlide() {
+            clearInterval(autoSlide);
+        }
+
         prevButton.addEventListener('click', prevSlide);
         nextButton.addEventListener('click', nextSlide);
-        document.addEventListener("DOMContentLoaded", startAutoSlide);
-    </script>
 
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') nextSlide();
+            if (event.key === 'ArrowLeft') prevSlide();
+        });
+
+        track.addEventListener('mouseenter', stopAutoSlide);
+        track.addEventListener('mouseleave', startAutoSlide);
+
+        items.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.classList.add('indicator');
+            if (i === 0) dot.classList.add('active-indicator');
+            dot.setAttribute('data-index', i);
+
+            dot.addEventListener('click', (e) => {
+                index = parseInt(e.target.getAttribute('data-index'));
+                updateCarousel();
+            });
+
+            indicatorsContainer.appendChild(dot);
+        });
+
+        function updateIndicators() {
+            document.querySelectorAll('.indicator').forEach((dot, i) => {
+                dot.classList.toggle('active-indicator', i === index);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            startAutoSlide();
+        });
+
+        // Toggle menu on mobile
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        });
+    </script>
 </body>
 </html>
