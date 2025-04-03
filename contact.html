@@ -68,16 +68,10 @@
 
         .contact-item {
             background: linear-gradient(135deg, #1a1a1a, #222);
-            padding: 20px;
             border-radius: 10px;
             width: 80%;
             max-width: 400px;
             margin: 10px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
         }
 
@@ -92,15 +86,15 @@
         }
 
         .contact-item a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            display: flex;
+            display: flex; /* Ensure full clickability */
             align-items: center;
-            width: 100%;
-            height: 100%;
             justify-content: center;
-            padding: 10px; /* Ensures full clickable area */
+            width: 100%;  /* Fill the entire box */
+            height: 60px; /* Set a fixed height */
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 10px;
         }
 
         .contact-item i {
