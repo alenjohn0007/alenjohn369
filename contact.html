@@ -68,17 +68,17 @@
 
         .contact-item {
             background: linear-gradient(135deg, #1a1a1a, #222);
-            border-radius: 10px;
-            width: 80%;
-            max-width: 400px;
-            margin: 10px 0;
+            border-radius: 12px;
+            width: 85%;
+            max-width: 450px; /* Increased width */
+            margin: 12px 0;
             overflow: hidden;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
         }
 
         .contact-item:hover {
-            transform: scale(1.08);
-            box-shadow: 0px 0px 20px rgba(30, 219, 9, 0.9);
+            transform: scale(1.1);
+            box-shadow: 0px 0px 25px rgba(30, 219, 9, 0.9);
             background: linear-gradient(135deg, #222, #333);
         }
 
@@ -90,18 +90,19 @@
             display: flex; /* Ensure full clickability */
             align-items: center;
             justify-content: center;
-            width: 100%;  /* Fill the entire box */
-            height: 60px; /* Set a fixed height */
+            width: 100%;  
+            height: 80px; /* Increased height */
             text-decoration: none;
             color: #fff;
-            font-size: 18px;
-            border-radius: 10px;
+            font-size: 20px; /* Slightly bigger font */
+            font-weight: bold;
+            border-radius: 12px;
             box-sizing: border-box; /* Ensures padding doesn't affect size */
         }
 
         .contact-item i {
-            font-size: 24px;
-            margin-right: 10px;
+            font-size: 28px; /* Bigger icon */
+            margin-right: 12px;
             transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
             pointer-events: none; /* Prevents interference */
         }
