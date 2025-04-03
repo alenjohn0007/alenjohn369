@@ -15,15 +15,17 @@
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
     <style>
-        /* Fix for shifting text */
+        /* Prevent text shifting issue */
         .pro-text-container {
             display: inline-block;
-            width: 200px; /* Adjust based on the longest word */
+            width: 220px; /* Adjust width based on the longest text */
             text-align: left;
             overflow: hidden;
+            white-space: nowrap;
+            font-weight: bold;
         }
 
-        /* Responsive Design Fix */
+        /* Responsive Fixes */
         @media screen and (max-width: 768px) {
             .home-content {
                 text-align: center;
@@ -89,12 +91,26 @@
     </section>
 
     <script>
-        var typed = new Typed(".pro-text", {
-            strings: ["SOC Analyst", "Ethical Hacker", "Security Researcher", "Incident Responder", "Web Developer"],
-            typeSpeed: 100,
-            backSpeed: 100,
-            backDelay: 1000,
-            loop: true
+        // Set a fixed width to prevent shifting
+        document.addEventListener("DOMContentLoaded", function () {
+            let longestWord = "Security Researcher"; // Set the longest text here
+            let container = document.querySelector(".pro-text-container");
+            let testSpan = document.createElement("span");
+            testSpan.style.visibility = "hidden";
+            testSpan.style.whiteSpace = "nowrap";
+            testSpan.textContent = longestWord;
+            container.appendChild(testSpan);
+            container.style.width = testSpan.offsetWidth + "px";
+            testSpan.remove();
+
+            // Typed.js animation
+            var typed = new Typed(".pro-text", {
+                strings: ["SOC Analyst", "Ethical Hacker", "Security Researcher", "Incident Responder", "Web Developer"],
+                typeSpeed: 100,
+                backSpeed: 100,
+                backDelay: 1000,
+                loop: true
+            });
         });
     </script>
 
