@@ -163,22 +163,31 @@
             display: block;
         }
 
+        /* Carousel Navigation Buttons */
         .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
             display: flex;
-            justify-content: center;
-            margin-top: 20px;
+            justify-content: space-between;
+            transform: translateY(-50%);
         }
 
         .carousel-button {
-            background-color: #fff;
-            color: #000;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: black;
             border: none;
             padding: 10px 15px;
             cursor: pointer;
-            margin: 0 5px;
-            border-radius: 5px;
+            border-radius: 50%;
+            font-size: 18px;
         }
 
+        .carousel-button:hover {
+            background-color: white;
+        }
+
+        /* Indicators */
         .indicators {
             text-align: center;
             margin-top: 10px;
@@ -222,34 +231,46 @@
         <h2>My Projects</h2>
         <div class="carousel">
             <div class="carousel-track">
-                <div class="carousel-item">
-                    <div class="project-title">SOC Project - Website Log Monitoring Using Splunk</div>
-                    <div class="project-description">Deploying WordPress on Ubuntu and monitoring its logs using Splunk for real-time security analysis.</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="project-title">MCA Project - Anganwadi Management System</div>
-                    <div class="project-description">A web-based system to manage Anganwadi centers, including child registration, staff scheduling, and vaccination tracking.</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="project-title">Wazuh Windows 11 Monitoring</div>
-                    <div class="project-description">Monitoring Windows 11 endpoints using Wazuh SIEM for log analysis, intrusion detection, and compliance auditing.</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="project-title">BCA Project - Latex Sales and Service System</div>
-                    <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="project-title">VAPT Project</div>
-                    <div class="project-description">Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</div>
-                </div>
+                <div class="carousel-item"><div class="project-title">SOC Project - Splunk</div></div>
+                <div class="carousel-item"><div class="project-title">Anganwadi Management System</div></div>
+                <div class="carousel-item"><div class="project-title">Wazuh Windows 11 Monitoring</div></div>
+                <div class="carousel-item"><div class="project-title">Latex Sales System</div></div>
+                <div class="carousel-item"><div class="project-title">VAPT Project</div></div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="carousel-buttons">
+                <button class="carousel-button prev" onclick="prevSlide()">❮</button>
+                <button class="carousel-button next" onclick="nextSlide()">❯</button>
             </div>
         </div>
     </section>
 
     <script>
-        function toggleMenu() {
-            document.querySelector('.navbar').classList.toggle('active');
+        let index = 0;
+        const track = document.querySelector(".carousel-track");
+        const items = document.querySelectorAll(".carousel-item");
+        const totalItems = items.length;
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${index * 100}%)`;
         }
+
+        function nextSlide() {
+            index = (index + 1) % totalItems;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            index = (index - 1 + totalItems) % totalItems;
+            updateCarousel();
+        }
+
+        function autoSlide() {
+            nextSlide();
+        }
+
+        setInterval(autoSlide, 3000);
     </script>
 </body>
 </html>
