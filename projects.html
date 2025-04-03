@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Alen</title>
 
-    <!-- Correct path to favicon and CSS -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
 
-    <!-- External CSS (boxicons) -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <style>
@@ -34,51 +32,72 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #333;
-            padding: 20px;
-            z-index: 100;
+            background-color: rgba(51, 51, 51, 0.9);
+            padding: 15px 20px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            color: #fff;
+            font-size: 24px;
+            color: white;
             text-decoration: none;
-            font-size: 30px;
+            font-weight: bold;
         }
 
         .navbar {
             display: flex;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
             gap: 15px;
         }
 
-        .nav-links a {
+        .navbar a {
             color: #fff;
-            padding: 10px 20px;
             text-decoration: none;
-            margin: 0 10px;
+            padding: 10px 15px;
             font-size: 16px;
-            transition: background 0.3s ease;
+            transition: 0.3s;
         }
 
-        .nav-links a:hover {
+        .navbar a:hover {
             background-color: #575757;
             border-radius: 5px;
         }
 
-        .menu-toggle {
+        .menu-icon {
             display: none;
-            background: none;
-            border: none;
-            color: #fff;
             font-size: 28px;
+            color: white;
             cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: rgba(51, 51, 51, 0.9);
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .navbar a {
+                display: block;
+                padding: 10px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
         }
 
         section {
@@ -169,51 +188,20 @@
         .active-indicator {
             background-color: white;
         }
-
-        /* Responsive Navigation */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background: #333;
-                width: 100%;
-                text-align: center;
-                padding: 10px 0;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 12px;
-                font-size: 18px;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-        }
     </style>
 </head>
 <body>
     <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
+
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
         <nav class="navbar">
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="skill.html">Skills</a>
-                <a href="projects.html" class="active">Projects</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <i class="bx bx-menu"></i>
-            </button>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="skill.html">Skills</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
@@ -237,90 +225,17 @@
                     <div class="project-title">BCA Project - Latex Sales and Service System</div>
                     <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
                 </div>
-                <div class="carousel-item">
-                    <div class="project-title">VAPT Project</div>
-                    <div class="project-description">Vulnerability Assessment and Penetration Testing (VAPT) for web applications, identifying security flaws and recommending mitigations.</div>
-                </div>
             </div>
         </div>
-        <div class="carousel-buttons">
-            <button class="carousel-button" id="prev">❮</button>
-            <button class="carousel-button" id="next">❯</button>
-        </div>
-        <div class="indicators"></div>
     </section>
 
     <script>
-        const track = document.querySelector('.carousel-track');
-        const prevButton = document.getElementById('prev');
-        const nextButton = document.getElementById('next');
-        const items = document.querySelectorAll('.carousel-item');
-        const indicatorsContainer = document.querySelector('.indicators');
-        let index = 0;
-        let autoSlide;
-
-        function updateCarousel() {
-            track.style.transform = `translateX(-${index * 100}%)`;
-            updateIndicators();
+        // Toggle Menu for Mobile View
+        function toggleMenu() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('active');
         }
-
-        function nextSlide() {
-            index = (index + 1) % items.length;
-            updateCarousel();
-        }
-
-        function prevSlide() {
-            index = (index - 1 + items.length) % items.length;
-            updateCarousel();
-        }
-
-        function startAutoSlide() {
-            autoSlide = setInterval(nextSlide, 3000);
-        }
-
-        function stopAutoSlide() {
-            clearInterval(autoSlide);
-        }
-
-        prevButton.addEventListener('click', prevSlide);
-        nextButton.addEventListener('click', nextSlide);
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowRight') nextSlide();
-            if (event.key === 'ArrowLeft') prevSlide();
-        });
-
-        track.addEventListener('mouseenter', stopAutoSlide);
-        track.addEventListener('mouseleave', startAutoSlide);
-
-        items.forEach((_, i) => {
-            const dot = document.createElement('span');
-            dot.classList.add('indicator');
-            if (i === 0) dot.classList.add('active-indicator');
-            dot.setAttribute('data-index', i);
-
-            dot.addEventListener('click', (e) => {
-                index = parseInt(e.target.getAttribute('data-index'));
-                updateCarousel();
-            });
-
-            indicatorsContainer.appendChild(dot);
-        });
-
-        function updateIndicators() {
-            document.querySelectorAll('.indicator').forEach((dot, i) => {
-                dot.classList.toggle('active-indicator', i === index);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            startAutoSlide();
-        });
-
-        // Toggle menu on mobile
-        document.querySelector(".menu-toggle").addEventListener("click", function() {
-            document.querySelector(".nav-links").classList.toggle("active");
-        });
     </script>
+
 </body>
 </html>
