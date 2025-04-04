@@ -103,7 +103,7 @@
         h2 {
             font-size: 36px;
             margin-bottom: 20px;
-            color: #00ff00;
+            color: #fff; /* Changed to white */
         }
 
         /* Carousel Styling */
@@ -118,10 +118,11 @@
         }
         .carousel-track {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.7s ease-in-out; /* Smooth transition */
+            white-space: nowrap;
         }
         .carousel-item {
-            min-width: 100%;
+            flex: 0 0 100%;
             padding: 30px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
@@ -131,7 +132,7 @@
             font-size: 22px;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #00ff00;
+            color: #fff; /* Changed to white */
         }
         .project-description {
             font-size: 16px;
@@ -146,7 +147,7 @@
             padding: 10px 20px;
             margin: 5px;
             font-size: 16px;
-            background: #00ff00;
+            background: #fff; /* Changed to white */
             color: #000;
             border: none;
             border-radius: 5px;
@@ -154,7 +155,7 @@
             transition: 0.3s;
         }
         .carousel-button:hover {
-            background: #009900;
+            background: #bbb; /* Light gray hover effect */
         }
     </style>
 </head>
@@ -183,7 +184,7 @@
                     <div class="project-title">MCA Project - Anganwadi Management System</div>
                     <div class="project-description">A web-based system to manage Anganwadi centers, including child registration, staff scheduling, and vaccination tracking.</div>
                 </div>
-                 <div class="carousel-item">
+                <div class="carousel-item">
                     <div class="project-title">BCA Project - Latex Sales And Service System</div>
                     <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
                 </div>
