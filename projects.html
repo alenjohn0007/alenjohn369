@@ -16,8 +16,8 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background-color: #0a0a0a;
-            color: #fff;
+            background-color: white;
+            color: black;
             opacity: 0;
             animation: fadeIn 1.5s ease-in-out forwards;
             text-align: center;
@@ -34,7 +34,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), green, rgba(0, 0, 0, 0.7));
+            background: rgba(0, 0, 0, 0.8);
             padding: 15px 20px;
             z-index: 1000;
             backdrop-filter: blur(5px);
@@ -43,7 +43,7 @@
             align-items: center;
         }
         .logo {
-            color: #fff;
+            color: white;
             text-decoration: none;
             font-size: 24px;
         }
@@ -51,7 +51,7 @@
             display: flex;
         }
         .navbar a {
-            color: #fff;
+            color: white;
             padding: 10px 20px;
             text-decoration: none;
             margin: 0 10px;
@@ -103,7 +103,7 @@
         h2 {
             font-size: 36px;
             margin-bottom: 20px;
-            color: #00ff00;
+            color: black;
         }
 
         /* Carousel Styling */
@@ -114,7 +114,8 @@
             margin: 0 auto;
             overflow: hidden;
             border-radius: 10px;
-            border: 2px solid #00ff00;
+            border: 2px solid black;
+            background: rgba(0, 0, 0, 0.05);
         }
         .carousel-track {
             display: flex;
@@ -123,19 +124,20 @@
         .carousel-item {
             min-width: 100%;
             padding: 30px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             transition: 0.5s;
+            text-align: center;
         }
         .project-title {
             font-size: 22px;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #00ff00;
+            color: black;
         }
         .project-description {
             font-size: 16px;
-            color: #ddd;
+            color: black;
         }
 
         /* Carousel Buttons */
@@ -146,15 +148,16 @@
             padding: 10px 20px;
             margin: 5px;
             font-size: 16px;
-            background: #00ff00;
-            color: #000;
-            border: none;
+            background: white;
+            color: black;
+            border: 2px solid black;
             border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
         }
         .carousel-button:hover {
-            background: #009900;
+            background: black;
+            color: white;
         }
     </style>
 </head>
@@ -207,7 +210,7 @@
         const totalSlides = slides.length;
 
         function updateSlide() {
-            track.style.transform = translateX(-${index * 100}%);
+            track.style.transform = `translateX(-${index * 100}%)`;
         }
 
         function nextSlide() {
