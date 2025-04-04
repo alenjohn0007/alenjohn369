@@ -95,6 +95,7 @@ body {
     opacity: 0;
     animation: slideRight 1s ease forwards;
     animation-delay: .7s;
+    margin-top: 80px; /* <-- Add this */
 }   
 
 .home-content h3 {
@@ -106,7 +107,7 @@ body {
 }
 
 .mu {
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .home-content h1, h3 {
