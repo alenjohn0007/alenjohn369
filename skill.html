@@ -6,108 +6,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Alen</title>
 
+    <!-- Favicon & CSS -->
     <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
     <link rel="stylesheet" href="CSS/style.css">
 
-    <!-- External resources -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- External Boxicons and Typed.js -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
-    <!-- Responsive Styling -->
     <style>
+        /* Responsive design tweaks */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             color: #fff;
-            background-color: #000;
+            background-color: #0e0e0e;
             overflow-x: hidden;
         }
 
-        #matrixCanvas {
+        header.header {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-        }
-
-        .header {
+            width: 100%;
+            background: rgba(0,0,0,0.8);
+            padding: 20px 100px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 100;
         }
 
         .logo {
+            font-size: 24px;
             color: #00ffff;
-            font-size: 1.5rem;
-            text-decoration: none;
             font-weight: bold;
-        }
-
-        .navbar {
-            display: flex;
-            gap: 20px;
-        }
-
-        .navbar a {
-            color: #fff;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
         }
 
-        .navbar a:hover,
-        .navbar a.active {
+        nav.navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: 0.3s ease;
+        }
+
+        nav.navbar a:hover,
+        nav.navbar a.active {
             color: #00ffff;
         }
 
-        .home {
+        section.home {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 60px 40px;
-            min-height: 100vh;
             flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            min-height: 100vh;
+            padding: 100px 50px;
+            text-align: center;
         }
 
         .home-content {
-            flex: 1;
-            min-width: 280px;
-        }
-
-        .home-content h3 {
-            font-size: 1.5rem;
-            color: #00ffff;
+            max-width: 600px;
         }
 
         .home-content h1 {
             font-size: 3rem;
-            margin: 10px 0;
+            color: #00ffff;
+        }
+
+        .home-content h3 {
+            font-size: 1.5rem;
+            margin: 20px 0;
         }
 
         .home-content p {
-            margin-top: 20px;
             font-size: 1rem;
-            line-height: 1.8;
+            line-height: 1.6;
             text-align: justify;
-        }
-
-        .home-sci {
-            margin-top: 20px;
         }
 
         .home-sci a {
             color: #00ffff;
+            margin: 10px;
             font-size: 1.8rem;
-            margin-right: 15px;
             transition: transform 0.3s;
         }
 
@@ -116,119 +102,91 @@
         }
 
         .btn-box {
+            margin-top: 20px;
             display: inline-block;
+            padding: 10px 25px;
             background-color: #00ffff;
             color: #000;
             font-weight: bold;
-            padding: 12px 25px;
-            border-radius: 5px;
             text-decoration: none;
-            margin-top: 30px;
+            border-radius: 10px;
         }
 
         .home-img {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-width: 250px;
+            margin-top: 30px;
         }
 
         .glowing-circle {
             position: relative;
-            padding: 10px;
-            border: 3px solid #00ffff;
-            border-radius: 50%;
-            animation: glow 2s infinite ease-in-out;
-        }
-
-        .image img {
             width: 250px;
             height: 250px;
-            object-fit: cover;
             border-radius: 50%;
+            animation: glow 2s infinite ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .glowing-circle span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,255,255,0.5) 0%, transparent 70%);
+            animation: pulse 2s infinite;
+        }
+
+        .glowing-circle .image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #00ffff;
         }
 
         @keyframes glow {
             0% {
-                box-shadow: 0 0 10px #00ffff;
+                box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
             }
             50% {
-                box-shadow: 0 0 20px #00ffff;
+                box-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff;
             }
             100% {
-                box-shadow: 0 0 10px #00ffff;
+                box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
             }
         }
 
-        /* Responsive Styles */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+        }
+
+        /* Mobile responsive */
         @media (max-width: 768px) {
-            .home {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 40px 20px;
-            }
-
             .home-content h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
-            .home-content h3 {
-                font-size: 1.2rem;
-            }
-
-            .home-content p {
-                font-size: 0.95rem;
-            }
-
-            .image img {
+            .glowing-circle {
                 width: 180px;
                 height: 180px;
             }
 
-            .btn-box {
-                padding: 10px 20px;
-                font-size: 0.95rem;
+            .glowing-circle .image img {
+                width: 150px;
+                height: 150px;
             }
 
-            .header {
+            header.header {
+                padding: 20px;
                 flex-direction: column;
                 gap: 10px;
-            }
-
-            .navbar {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .home-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .home-content h3 {
-                font-size: 1rem;
-            }
-
-            .home-content p {
-                font-size: 0.9rem;
-            }
-
-            .image img {
-                width: 140px;
-                height: 140px;
-            }
-
-            .btn-box {
-                padding: 8px 16px;
-                font-size: 0.85rem;
-            }
-
-            .home-sci a {
-                font-size: 1.5rem;
             }
         }
     </style>
@@ -251,7 +209,7 @@
 
     <section id="home" class="home">
         <div class="home-content" data-scroll data-scroll-speed="-5">
-            <h3 class="mu">Hello, It's me</h3>
+            <h3>Hello, It's me</h3>
             <h1>Alen John</h1>
             <h3>And I'm a <span class="pro-text"></span></h3>
 
@@ -272,9 +230,9 @@
             </script>
 
             <p>
-                &emsp; &emsp;This portfolio highlights my passion for <strong>cybersecurity</strong>, my expertise in monitoring and defending against security incidents, and my skills in ethical hacking.<br><br>
-                &emsp; &emsp;I have practical experience in identifying threats, conducting security assessments, and responding to incidents that target networks, applications, and systems.<br><br>
-                &emsp; &emsp;I’m constantly learning and improving my skills in SOC, penetration testing, and developing security solutions to mitigate risks and vulnerabilities.
+                &emsp;&emsp;This portfolio highlights my passion for <strong>cybersecurity</strong>, my expertise in monitoring and defending against security incidents, and my skills in ethical hacking.<br><br>
+                &emsp;&emsp;I have practical experience in identifying threats, conducting security assessments, and responding to incidents that target networks, applications, and systems.<br><br>
+                &emsp;&emsp;I’m constantly learning and improving my skills in SOC, penetration testing, and developing security solutions to mitigate risks and vulnerabilities.
             </p>
 
             <div class="home-sci">
