@@ -16,8 +16,8 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background-color: white;
-            color: black;
+            background-color: #0a0a0a;
+            color: #fff;
             opacity: 0;
             animation: fadeIn 1.5s ease-in-out forwards;
             text-align: center;
@@ -34,7 +34,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), green, rgba(0, 0, 0, 0.7));
             padding: 15px 20px;
             z-index: 1000;
             backdrop-filter: blur(5px);
@@ -43,7 +43,7 @@
             align-items: center;
         }
         .logo {
-            color: white;
+            color: #fff;
             text-decoration: none;
             font-size: 24px;
         }
@@ -51,7 +51,7 @@
             display: flex;
         }
         .navbar a {
-            color: white;
+            color: #fff;
             padding: 10px 20px;
             text-decoration: none;
             margin: 0 10px;
@@ -103,7 +103,7 @@
         h2 {
             font-size: 36px;
             margin-bottom: 20px;
-            color: black;
+            color: #00ff00;
         }
 
         /* Carousel Styling */
@@ -114,30 +114,29 @@
             margin: 0 auto;
             overflow: hidden;
             border-radius: 10px;
-            border: 2px solid black;
-            background: rgba(0, 0, 0, 0.05);
+            border: 2px solid #00ff00;
         }
         .carousel-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            width: 400%;
         }
         .carousel-item {
             min-width: 100%;
             padding: 30px;
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             transition: 0.5s;
-            text-align: center;
         }
         .project-title {
             font-size: 22px;
             font-weight: bold;
             margin-bottom: 10px;
-            color: black;
+            color: #00ff00;
         }
         .project-description {
             font-size: 16px;
-            color: black;
+            color: #ddd;
         }
 
         /* Carousel Buttons */
@@ -148,16 +147,15 @@
             padding: 10px 20px;
             margin: 5px;
             font-size: 16px;
-            background: white;
-            color: black;
-            border: 2px solid black;
+            background: #00ff00;
+            color: #000;
+            border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
         }
         .carousel-button:hover {
-            background: black;
-            color: white;
+            background: #009900;
         }
     </style>
 </head>
@@ -186,7 +184,7 @@
                     <div class="project-title">MCA Project - Anganwadi Management System</div>
                     <div class="project-description">A web-based system to manage Anganwadi centers, including child registration, staff scheduling, and vaccination tracking.</div>
                 </div>
-                 <div class="carousel-item">
+                <div class="carousel-item">
                     <div class="project-title">BCA Project - Latex Sales And Service System</div>
                     <div class="project-description">A web application for managing latex product sales and service tracking for customers.</div>
                 </div>
