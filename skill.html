@@ -14,7 +14,6 @@
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
     <style>
-        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -24,7 +23,6 @@
             overflow-x: hidden;
         }
 
-        /* Navbar Styling */
         .header {
             width: 100%;
             position: fixed;
@@ -64,7 +62,6 @@
             border-radius: 5px;
         }
 
-        /* Hamburger Icon */
         .menu-icon {
             display: none;
             font-size: 28px;
@@ -72,7 +69,6 @@
             cursor: pointer;
         }
 
-        /* Responsive Design */
         @media screen and (max-width: 768px) {
             .navbar {
                 display: none;
@@ -100,13 +96,12 @@
             }
         }
 
-        /* Skills Section */
         section {
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            height: 100vh;
+            min-height: 100vh;
             padding: 40px;
             margin-top: 80px;
             background-color: #0a0a0a;
@@ -142,7 +137,9 @@
             }
         }
 
-        .skill-box:nth-child(n) { animation-delay: 0.3s; }
+        .skill-box:nth-child(n) {
+            animation-delay: 0.3s;
+        }
 
         .skill-icon {
             font-size: 40px;
@@ -167,20 +164,16 @@
             opacity: 1;
             transform: translateY(0);
         }
-
     </style>
 </head>
 <body>
 
-    <!-- Matrix Effect -->
-    <canvas id="matrixCanvas"></canvas>
+    <!-- Matrix Effect Canvas (optional if you want to use it) -->
+    <!-- <canvas id="matrixCanvas"></canvas> -->
 
     <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
-
-        <!-- Hamburger Icon -->
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
-
         <nav class="navbar">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -192,12 +185,11 @@
 
     <section id="skills">
         <div class="skills-container" id="skillsContainer">
-            <!-- Dynamic skills will be added here -->
+            <!-- Skill boxes will be inserted dynamically -->
         </div>
     </section>
 
     <script>
-        // Skills Data
         const skills = [
             { icon: 'bxs-lock-alt', title: 'Cybersecurity', description: 'Proficient in network security, vulnerability assessments, and penetration testing.' },
             { icon: 'bxl-python', title: 'Python Programming', description: 'Experienced in scripting for automation, data analysis, and security tools.' },
@@ -209,37 +201,34 @@
             { icon: 'bx-network-chart', title: 'Network Monitoring', description: 'Knowledgeable in monitoring and securing networks using advanced tools.' }
         ];
 
-        // Function to Render Skills
         function renderSkills() {
             const container = document.getElementById('skillsContainer');
-            container.innerHTML = ''; // Clear previous content
+            container.innerHTML = '';
 
             skills.forEach((skill, index) => {
                 const skillBox = document.createElement('div');
                 skillBox.classList.add('skill-box');
-                skillBox.style.animationDelay = ${0.3 + index * 0.2}s;
+                skillBox.style.animationDelay = `${0.3 + index * 0.2}s`;
 
-                skillBox.innerHTML = 
+                skillBox.innerHTML = `
                     <div class="skill-icon">
                         <i class='bx ${skill.icon}'></i>
                     </div>
                     <div class="skill-title">${skill.title}</div>
                     <div class="skill-description">${skill.description}</div>
-                ;
+                `;
 
                 container.appendChild(skillBox);
             });
         }
 
-        // Toggle Menu for Mobile View
         function toggleMenu() {
             const navbar = document.querySelector('.navbar');
             navbar.classList.toggle('active');
         }
 
-        // Initialize Skills on Page Load
         document.addEventListener('DOMContentLoaded', renderSkills);
     </script>
 
 </body>
-</html> 
+</html>
