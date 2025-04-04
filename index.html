@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alen Portfolio</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Alen | Portfolio</title>
+
+    <!-- Boxicons CDN -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <style>
         body {
@@ -14,13 +16,6 @@
             background-color: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
-        }
-
-        canvas#matrixCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
         }
 
         /* Header styles */
@@ -86,7 +81,7 @@
                 top: 100%;
                 right: 0;
                 width: 100%;
-                background-color: rgba(51, 51, 51, 0.95);
+                background-color: rgba(51, 51, 51, 0.9); /* semi grey */
                 padding: 20px 0;
                 transition: all 0.3s ease;
                 z-index: 1000;
@@ -112,127 +107,41 @@
             margin-top: 80px;
             background-color: #0a0a0a;
         }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .skill-box {
-            background-color: #333;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInBox 1s forwards;
-            position: relative;
-        }
-
-        @keyframes fadeInBox {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .skill-icon {
-            font-size: 40px;
-            color: #1edb09;
-            margin-bottom: 20px;
-        }
-
-        .skill-title {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .skill-description {
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            color: #ccc;
-            font-size: 16px;
-        }
-
-        .skill-box:hover .skill-description {
-            opacity: 1;
-            transform: translateY(0);
-        }
     </style>
 </head>
 <body>
 
-    <!-- Matrix Background Canvas -->
+    <!-- Optional: Matrix Canvas Effect -->
     <canvas id="matrixCanvas"></canvas>
     <script src="/JAVASCRIPT/matrix.js"></script>
 
-    <!-- Header -->
+    <!-- Header with Hamburger Menu -->
     <header class="header">
         <a href="#" class="logo">Portfolio | Alen</a>
-        <i class='bx bx-menu' id="menu-icon" onclick="toggleMenu()"></i>
+        <i class='bx bx-menu' id="menu-icon"></i>
 
         <nav class="navbar">
-            <a href="index.html" style="--i:1;" class="active">Home</a>
-            <a href="about.html" style="--i:2;">About</a>
-            <a href="skill.html" style="--i:3;">Skills</a>
-            <a href="projects.html" style="--i:4;">Projects</a>
-            <a href="contact.html" style="--i:5;">Contact</a>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="skill.html">Skills</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="skills-container" id="skillsContainer"></div>
+    <!-- Main Section -->
+    <section>
+        <h1>Welcome to My Portfolio</h1>
     </section>
 
-    <!-- JS -->
+    <!-- JavaScript for Hamburger Toggle -->
     <script>
-        const skills = [
-            { icon: 'bxs-lock-alt', title: 'Cybersecurity', description: 'Proficient in network security, vulnerability assessments, and penetration testing.' },
-            { icon: 'bxl-python', title: 'Python Programming', description: 'Experienced in scripting for automation, data analysis, and security tools.' },
-            { icon: 'bxs-server', title: 'Linux', description: 'Expert in Linux administration, shell scripting, and using Linux for penetration testing.' },
-            { icon: 'bxl-docker', title: 'Docker', description: 'Familiar with containerization and using Docker for environment management.' },
-            { icon: 'bx-shield', title: 'Wazuh SIEM', description: 'Experienced in using Wazuh for Security Information and Event Management (SIEM).' },
-            { icon: 'bx-shield-alt', title: 'Splunk SIEM', description: 'Expertise in Splunk for security data analysis, alerting, and monitoring.' },
-            { icon: 'bx-archive', title: 'Log Analysis', description: 'Skilled in analyzing logs for security incidents and monitoring system health.' },
-            { icon: 'bx-network-chart', title: 'Network Monitoring', description: 'Knowledgeable in monitoring and securing networks using advanced tools.' }
-        ];
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.querySelector('.navbar');
 
-        function renderSkills() {
-            const container = document.getElementById('skillsContainer');
-            container.innerHTML = '';
-
-            skills.forEach((skill, index) => {
-                const skillBox = document.createElement('div');
-                skillBox.classList.add('skill-box');
-                skillBox.style.animationDelay = `${0.3 + index * 0.2}s`;
-
-                skillBox.innerHTML = `
-                    <div class="skill-icon">
-                        <i class='bx ${skill.icon}'></i>
-                    </div>
-                    <div class="skill-title">${skill.title}</div>
-                    <div class="skill-description">${skill.description}</div>
-                `;
-
-                container.appendChild(skillBox);
-            });
-        }
-
-        function toggleMenu() {
-            const navbar = document.querySelector('.navbar');
+        menuIcon.addEventListener('click', () => {
             navbar.classList.toggle('active');
-        }
-
-        document.addEventListener('DOMContentLoaded', renderSkills);
+        });
     </script>
 </body>
 </html>
