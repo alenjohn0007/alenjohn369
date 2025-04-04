@@ -1,145 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio | Alen</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Alen</title>
 
-  <link rel="icon" type="image/png" href="IMAGES/sailogo.png" />
-  <link rel="stylesheet" href="CSS/style.css" />
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <link rel="icon" type="image/png" href="IMAGES/sailogo.png">
+    <link rel="stylesheet" href="CSS/style.css">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      height: 100%;
-      background-color: #0a0a0a;
-      color: #fff;
-      overflow-x: hidden;
-    }
+    <!-- External resources -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
-    .header {
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: rgba(51, 51, 51, 0.9);
-      padding: 15px 20px;
-      z-index: 1000;
-      backdrop-filter: blur(5px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    <!-- Responsive Styling -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    .logo {
-      font-size: 24px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            background-color: #000;
+            overflow-x: hidden;
+        }
 
-    .navbar {
-      display: flex;
-      gap: 15px;
-    }
+        #matrixCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
 
-    .navbar a {
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 15px;
-      font-size: 16px;
-      transition: 0.3s;
-    }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
-    .navbar a:hover {
-      background-color: #575757;
-      border-radius: 5px;
-    }
+        .logo {
+            color: #00ffff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    .menu-icon {
-      display: none;
-      font-size: 28px;
-      color: white;
-      cursor: pointer;
-    }
+        .navbar {
+            display: flex;
+            gap: 20px;
+        }
 
-    @media screen and (max-width: 768px) {
-      .navbar {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: rgba(51, 51, 51, 0.9);
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-      }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-      .navbar a {
-        display: block;
-        padding: 10px;
-      }
+        .navbar a:hover,
+        .navbar a.active {
+            color: #00ffff;
+        }
 
-      .menu-icon {
-        display: block;
-      }
+        .home {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 40px;
+            min-height: 100vh;
+            flex-wrap: wrap;
+        }
 
-      .navbar.active {
-        display: flex;
-      }
-    }
-  </style>
+        .home-content {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .home-content h3 {
+            font-size: 1.5rem;
+            color: #00ffff;
+        }
+
+        .home-content h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+        }
+
+        .home-content p {
+            margin-top: 20px;
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .home-sci {
+            margin-top: 20px;
+        }
+
+        .home-sci a {
+            color: #00ffff;
+            font-size: 1.8rem;
+            margin-right: 15px;
+            transition: transform 0.3s;
+        }
+
+        .home-sci a:hover {
+            transform: scale(1.2);
+        }
+
+        .btn-box {
+            display: inline-block;
+            background-color: #00ffff;
+            color: #000;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 30px;
+        }
+
+        .home-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 250px;
+        }
+
+        .glowing-circle {
+            position: relative;
+            padding: 10px;
+            border: 3px solid #00ffff;
+            border-radius: 50%;
+            animation: glow 2s infinite ease-in-out;
+        }
+
+        .image img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 10px #00ffff;
+            }
+            50% {
+                box-shadow: 0 0 20px #00ffff;
+            }
+            100% {
+                box-shadow: 0 0 10px #00ffff;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .home {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .home-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .home-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .home-content p {
+                font-size: 0.95rem;
+            }
+
+            .image img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .btn-box {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .home-content h3 {
+                font-size: 1rem;
+            }
+
+            .home-content p {
+                font-size: 0.9rem;
+            }
+
+            .image img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .btn-box {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .home-sci a {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <canvas id="matrixCanvas"></canvas>
-  <script src="/JAVASCRIPT/matrix.js"></script>
 
-  <header class="header">
-    <a href="#" class="logo">Portfolio | Alen</a>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <nav class="navbar" id="navbar">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="skill.html">Skills</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+    <canvas id="matrixCanvas"></canvas>
+    <script src="/JAVASCRIPT/matrix.js"></script>
 
-  <section id="home" class="home">
-    <div class="home-content">
-      <h3>Hello, It's me</h3>
-      <h1>Alen John</h1>
-      <h3>And I'm a <span class="pro-text"></span></h3>
-      <p>
-        This portfolio highlights my passion for cybersecurity, my expertise in monitoring and defending against security incidents, and my skills in ethical hacking.
-      </p>
-      <div class="home-sci">
-        <a href="https://github.com/alenjohn0007" target="_blank"><i class="bx bxl-github"></i></a>
-        <a href="https://www.linkedin.com/in/alenjohn9404/" target="_blank"><i class="bx bxl-linkedin"></i></a>
-        <a href="https://wa.me/918848603693" target="_blank"><i class="bx bxl-whatsapp"></i></a>
-      </div>
-      <a href="Alen_John_Resume.pdf" class="btn-box" download>Download CV</a>
-    </div>
-  </section>
+    <header class="header">
+        <a href="#" class="logo">Portfolio | Alen</a>
+        <nav class="navbar">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="skill.html">Skills</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
 
-  <script>
-    function toggleMenu() {
-      const navbar = document.getElementById("navbar");
-      navbar.classList.toggle("active");
-    }
+    <section id="home" class="home">
+        <div class="home-content" data-scroll data-scroll-speed="-5">
+            <h3 class="mu">Hello, It's me</h3>
+            <h1>Alen John</h1>
+            <h3>And I'm a <span class="pro-text"></span></h3>
 
-    var typed = new Typed(".pro-text", {
-      strings: ["SOC Analyst", "Ethical Hacker", "Security Researcher", "Incident Responder", "Web Developer"],
-      typeSpeed: 100,
-      backSpeed: 100,
-      backDelay: 1000,
-      loop: true
-    });
-  </script>
+            <script>
+                var typed = new Typed(".pro-text", {
+                    strings: [
+                        "SOC Analyst",
+                        "Ethical Hacker",
+                        "Security Researcher",
+                        "Incident Responder",
+                        "Web Developer"
+                    ],
+                    typeSpeed: 100,
+                    backSpeed: 100,
+                    backDelay: 1000,
+                    loop: true
+                });
+            </script>
+
+            <p>
+                &emsp; &emsp;This portfolio highlights my passion for <strong>cybersecurity</strong>, my expertise in monitoring and defending against security incidents, and my skills in ethical hacking.<br><br>
+                &emsp; &emsp;I have practical experience in identifying threats, conducting security assessments, and responding to incidents that target networks, applications, and systems.<br><br>
+                &emsp; &emsp;I’m constantly learning and improving my skills in SOC, penetration testing, and developing security solutions to mitigate risks and vulnerabilities.
+            </p>
+
+            <div class="home-sci">
+                <a href="https://github.com/alenjohn0007" target="_blank"><i class='bx bxl-github'></i></a>
+                <a href="https://www.linkedin.com/in/alenjohn9404/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://wa.me/918848603693" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+            </div>
+
+            <a href="Alen John_Resume.pdf" class="btn-box" download>Download CV</a>
+        </div>
+
+        <div class="home-img">
+            <div class="glowing-circle">
+                <span></span>
+                <span></span>
+                <div class="image">
+                    <img src="IMAGES/saianon.png" alt="Alen John">
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
