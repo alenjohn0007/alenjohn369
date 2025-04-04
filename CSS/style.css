@@ -95,7 +95,6 @@ body {
     opacity: 0;
     animation: slideRight 1s ease forwards;
     animation-delay: .7s;
-    margin-top: 80px; /* <-- Add this */
 }   
 
 .home-content h3 {
