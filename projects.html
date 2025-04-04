@@ -63,38 +63,6 @@
             border-radius: 5px;
         }
 
-        /* Hamburger Menu */
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 24px;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background-color: rgba(51, 51, 51, 0.9);
-                width: 100%;
-                text-align: center;
-                padding: 10px 0;
-            }
-            .navbar.active {
-                display: flex;
-            }
-            .navbar a {
-                display: block;
-                margin: 10px 0;
-            }
-            .menu-toggle {
-                display: block;
-            }
-        }
-
         /* Projects Section */
         #projects {
             margin-top: 80px;
@@ -126,7 +94,12 @@
             padding: 30px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            transition: 0.5s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px; /* Ensures proper alignment */
         }
         .project-title {
             font-size: 22px;
@@ -137,6 +110,8 @@
         .project-description {
             font-size: 16px;
             color: #ddd;
+            max-width: 90%;
+            text-align: center;
         }
 
         /* Carousel Buttons */
@@ -162,7 +137,6 @@
 <body>
     <header class="header">
         <a href="index.html" class="logo">Portfolio | Alen</a>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <nav class="navbar">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -221,11 +195,7 @@
             updateSlide();
         }
 
-        setInterval(nextSlide, 4000); // Auto-slide every 4 seconds
-
-        function toggleMenu() {
-            document.querySelector('.navbar').classList.toggle('active');
-        }
+        setInterval(nextSlide, 3000); // Auto-slide every 3 seconds
     </script>
 </body>
 </html>
